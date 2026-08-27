@@ -159,6 +159,7 @@
                     <a href="#about" class="nav-link hover:text-emerald-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all">عن المبادرة</a>
                     <a href="#fields" class="nav-link hover:text-emerald-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all">مجالاتنا</a>
                     <a href="#projects" class="nav-link hover:text-emerald-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all">مشاريعنا</a>
+                    <a href="#gallery" class="nav-link hover:text-emerald-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all">معرض الأثر</a>
                     <a href="#donate" class="nav-link hover:text-emerald-600 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-600 hover:after:w-full after:transition-all">طرق المساهمة</a>
                 </nav>
 
@@ -463,6 +464,218 @@
             </div>
         </section>
 
+        <!-- Gallery & Field Impact Section -->
+        <section id="gallery" class="py-24 bg-slate-100/80 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="reveal text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-emerald-600 font-bold text-sm tracking-wider uppercase block mb-2">معرض الأثر والتوثيق الميداني</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">عطاؤكم يثمر فرحاً وأثراً مستمراً</h2>
+                    <p class="text-slate-600 mt-4 text-base sm:text-lg">توثيق حي لمشاريع المبادرة وسلال رمضان ووقفات الخير إلى جانب أهلنا الكرام</p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="reveal delay-100 flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-12">
+                    <button onclick="filterGallery('all', this)" 
+                        class="gallery-filter-btn active bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all shadow-md shadow-emerald-600/20 hover:scale-105 active:scale-95 cursor-pointer">
+                        <span>الكل</span>
+                        <span class="text-xs opacity-80 mr-1.5">(10)</span>
+                    </button>
+                    <button onclick="filterGallery('photo', this)" 
+                        class="gallery-filter-btn bg-white hover:bg-slate-50 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm border border-slate-200 hover:border-emerald-300 transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2">
+                        <i class="fa-solid fa-camera text-emerald-600"></i>
+                        <span>الصور</span>
+                        <span class="text-xs text-slate-400">(6)</span>
+                    </button>
+                    <button onclick="filterGallery('video', this)" 
+                        class="gallery-filter-btn bg-white hover:bg-slate-50 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm border border-slate-200 hover:border-emerald-300 transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2">
+                        <i class="fa-solid fa-video text-rose-500"></i>
+                        <span>الفيديوهات</span>
+                        <span class="text-xs text-slate-400">(4)</span>
+                    </button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    <!-- Photos -->
+                    <!-- Item 1 -->
+                    <div class="gallery-item photo reveal delay-100 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
+                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.35 PM.jpeg', 'تجهيز وتوزيع السلال الغذائية الرمضانية')">
+                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.35 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                                <div class="text-white">
+                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
+                                    <p class="font-bold text-sm">تجهيز وتوزيع السلال الغذائية الرمضانية</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="gallery-item photo reveal delay-200 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
+                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (1).jpeg', 'مشاريع العطاء والإغاثة الميدانية')">
+                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (1).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                                <div class="text-white">
+                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
+                                    <p class="font-bold text-sm">مشاريع العطاء والإغاثة الميدانية</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="gallery-item photo reveal delay-300 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
+                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (2).jpeg', 'توصيل المساعدات للأسر المتعففة')">
+                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (2).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                                <div class="text-white">
+                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
+                                    <p class="font-bold text-sm">توصيل المساعدات للأسر المتعففة</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="gallery-item photo reveal delay-100 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
+                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM.jpeg', 'وقفات التكاتف والمساندة المجتمعية')">
+                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                                <div class="text-white">
+                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
+                                    <p class="font-bold text-sm">وقفات التكاتف والمساندة المجتمعية</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="gallery-item photo reveal delay-200 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
+                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM.jpeg', 'تأمين الاحتياجات الأساسية للمحتاجين')">
+                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                                <div class="text-white">
+                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
+                                    <p class="font-bold text-sm">تأمين الاحتياجات الأساسية للمحتاجين</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 6 -->
+                    <div class="gallery-item photo reveal delay-300 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
+                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM (1).jpeg', 'إشراف وتنسيق فريق فزعة المحتاج')">
+                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM (1).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                                <div class="text-white">
+                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
+                                    <p class="font-bold text-sm">إشراف وتنسيق فريق فزعة المحتاج</p>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Videos -->
+                    <!-- Video 1 -->
+                    <div class="gallery-item video reveal delay-100 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
+                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
+                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.33 PM.mp4" type="video/mp4">
+                                المتصفح لا يدعم تشغيل الفيديو.
+                            </video>
+                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
+                                <i class="fa-solid fa-video text-[10px]"></i>
+                                <span>فيديو توثيقي</span>
+                            </span>
+                        </div>
+                        <div class="p-4 bg-white border-t border-slate-100">
+                            <h4 class="font-bold text-slate-900 text-sm">توثيق تسليم وتوزيع المساعدات الميدانية</h4>
+                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="gallery-item video reveal delay-200 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
+                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
+                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.33 PM (1).mp4" type="video/mp4">
+                                المتصفح لا يدعم تشغيل الفيديو.
+                            </video>
+                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
+                                <i class="fa-solid fa-video text-[10px]"></i>
+                                <span>فيديو توثيقي</span>
+                            </span>
+                        </div>
+                        <div class="p-4 bg-white border-t border-slate-100">
+                            <h4 class="font-bold text-slate-900 text-sm">مراحل إعداد السلال والطرود الخيرية</h4>
+                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="gallery-item video reveal delay-300 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
+                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
+                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.33 PM (2).mp4" type="video/mp4">
+                                المتصفح لا يدعم تشغيل الفيديو.
+                            </video>
+                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
+                                <i class="fa-solid fa-video text-[10px]"></i>
+                                <span>فيديو توثيقي</span>
+                            </span>
+                        </div>
+                        <div class="p-4 bg-white border-t border-slate-100">
+                            <h4 class="font-bold text-slate-900 text-sm">استجابة المبادرة للحالات الميدانية العاجلة</h4>
+                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
+                        </div>
+                    </div>
+
+                    <!-- Video 4 -->
+                    <div class="gallery-item video reveal delay-100 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                        <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
+                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
+                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.34 PM.mp4" type="video/mp4">
+                                المتصفح لا يدعم تشغيل الفيديو.
+                            </video>
+                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
+                                <i class="fa-solid fa-video text-[10px]"></i>
+                                <span>فيديو توثيقي</span>
+                            </span>
+                        </div>
+                        <div class="p-4 bg-white border-t border-slate-100">
+                            <h4 class="font-bold text-slate-900 text-sm">فرحة المستفيدين وتوثيق إنجازات العطاء</h4>
+                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Donation Section -->
         <section id="donate" class="py-24 bg-slate-900 text-white relative overflow-hidden">
             <!-- Background glow circles -->
@@ -606,9 +819,37 @@
         <span id="toast-message" class="text-sm font-bold">تم نسخ الرقم بنجاح!</span>
     </div>
 
+    <!-- Lightbox Modal for Photo Preview -->
+    <div id="lightbox-modal" 
+        class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none"
+        onclick="if(event.target === this) closeLightbox()">
+        <div class="relative max-w-4xl w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col scale-95 transition-transform duration-300" id="lightbox-container">
+            <!-- Close Button -->
+            <button onclick="closeLightbox()" class="absolute top-4 left-4 z-10 w-10 h-10 rounded-full bg-slate-800/80 hover:bg-rose-600 text-white flex items-center justify-center transition-colors shadow-lg cursor-pointer" title="إغلاق">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <!-- Image View -->
+            <div class="w-full max-h-[75vh] bg-black flex items-center justify-center overflow-hidden">
+                <img id="lightbox-img" src="" alt="عرض الصورة" class="max-w-full max-h-[75vh] object-contain">
+            </div>
+            
+            <!-- Caption -->
+            <div class="p-4 sm:p-5 bg-slate-900 border-t border-slate-800 flex items-center justify-between">
+                <div>
+                    <span class="text-emerald-400 text-xs font-bold block mb-1">مبادرة فزعة المحتاج الخيرية</span>
+                    <h4 id="lightbox-caption" class="text-white font-bold text-sm sm:text-base"></h4>
+                </div>
+                <button onclick="closeLightbox()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer">
+                    إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Back to Top Button -->
     <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-        class="fixed bottom-6 right-6 w-11 h-11 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-xl flex items-center justify-center text-lg transition-all duration-300 opacity-0 pointer-events-none translate-y-4 hover:-translate-y-1 z-40"
+        class="fixed bottom-6 right-6 w-11 h-11 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full shadow-xl flex items-center justify-center text-lg transition-all duration-300 opacity-0 pointer-events-none translate-y-4 hover:-translate-y-1 z-40 cursor-pointer"
         title="العودة لأعلى الصفحة">
         <i class="fa-solid fa-chevron-up"></i>
     </button>
@@ -647,7 +888,7 @@
         </div>
     </footer>
 
-    <!-- Interactive Scripts: Copy + Scroll Reveal + Back to Top -->
+    <!-- Interactive Scripts: Copy + Scroll Reveal + Back to Top + Gallery Filter + Lightbox -->
     <script>
         // 1. Copy to Clipboard Functionality
         function copyNumber(text, btn, customMessage) {
@@ -720,7 +961,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('revealed');
-                        observer.unobserve(entry.target); // Reveal once
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
@@ -741,6 +982,68 @@
                     backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
                 }
             }, { passive: true });
+        });
+
+        // 4. Gallery Filtering Functionality
+        function filterGallery(category, btn) {
+            const buttons = document.querySelectorAll('.gallery-filter-btn');
+            buttons.forEach(b => {
+                b.classList.remove('active', 'bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/20');
+                b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+            });
+            btn.classList.add('active', 'bg-emerald-600', 'text-white', 'shadow-md', 'shadow-emerald-600/20');
+            btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = '';
+                    setTimeout(() => {
+                        item.classList.add('revealed');
+                    }, 50);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // 5. Lightbox Modal Functionality for Photos
+        function openLightbox(imgSrc, caption) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            const captionEl = document.getElementById('lightbox-caption');
+            const container = document.getElementById('lightbox-container');
+
+            if (modal && img) {
+                img.src = imgSrc;
+                if (captionEl) captionEl.textContent = caption || 'مبادرة فزعة المحتاج الخيرية';
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100');
+                if (container) {
+                    container.classList.remove('scale-95');
+                    container.classList.add('scale-100');
+                }
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightbox-modal');
+            const container = document.getElementById('lightbox-container');
+            if (modal) {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                if (container) {
+                    container.classList.remove('scale-100');
+                    container.classList.add('scale-95');
+                }
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close Lightbox with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 
