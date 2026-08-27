@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبادرة فزعة المحتاج الخيرية</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Arabic Font (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand / Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="logo.jpg" alt="شعار فزعة المحتاج" 
+                        class="w-13 h-13 sm:w-14 sm:h-14 rounded-full object-cover shadow-md border-2 border-amber-500/20 group-hover:scale-105 transition-transform flex-shrink-0">
+                    <div>
+                        <span class="text-xl font-extrabold text-slate-900 block leading-tight">فزعة المحتاج</span>
+                        <span class="text-xs font-semibold text-emerald-600 tracking-wide">مبادرة خيرية تطوعية</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
+                    <a href="#about" class="hover:text-emerald-600 transition-colors">عن المبادرة</a>
+                    <a href="#fields" class="hover:text-emerald-600 transition-colors">مجالاتنا</a>
+                    <a href="#projects" class="hover:text-emerald-600 transition-colors">مشاريعنا</a>
+                    <a href="#donate" class="hover:text-emerald-600 transition-colors">طرق المساهمة</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <a href="#donate"
+                    class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold transition-all shadow-md shadow-emerald-600/20 flex items-center gap-2">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>ساهم معنا</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-b from-emerald-900 via-slate-900 to-slate-950 text-white py-20 sm:py-24 overflow-hidden">
+            <div
+                class="absolute inset-0 opacity-10 bg-[radial-gradient(#emerald-500_1px,transparent_1px)] [background-size:16px_16px]">
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <!-- Hero Logo Display -->
+                <div class="inline-block p-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl mb-6">
+                    <img src="logo.jpg" alt="شعار فزعة المحتاج" class="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover shadow-inner mx-auto">
+                </div>
+                <div>
+                    <span
+                        class="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+                        #يلا_نسندهم
+                    </span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                    معاً نصنع أثراً… ومعاً نمد يد العون
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                    مبادرة تطوعية إنسانية تهدف إلى مساندة المحتاجين والوقوف إلى جانب الأسر والأفراد الذين يمرون بظروف
+                    صعبة، من خلال تقديم الدعم والمساعدة في مختلف المجالات الإنسانية والمجتمعية.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#donate"
+                        class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold px-8 py-4 rounded-xl shadow-lg transition-all text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-hand-holding-hand"></i>
+                        <span>تبرع الآن</span>
+                    </a>
+                    <a href="https://chat.whatsapp.com/JxMWrPjswZoGB5IoP1OgFv?s=cl&p=a&ilr=0" target="_blank"
+                        class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700 text-white font-bold px-8 py-4 rounded-xl transition-all text-lg flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                        <span>انضم لـ مجتمع الواتساب</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Story -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <span
+                            class="text-emerald-600 font-bold text-sm tracking-wider uppercase block mb-2">قصتنا</span>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-6 leading-snug">سبع سنوات من العطاء والتكاتف
+                            المجتمعي</h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            منذ انطلاقة مبادرة فزعة المحتاج الخيرية قبل نحو سبع سنوات، بدأت رسالتنا بفكرة بسيطة وعظيمة
+                            في معناها: <strong>أن لا يواجه المحتاج أزمته وحده.</strong>
+                        </p>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            وخلال هذه السنوات، واصلت المبادرة جهودها في مساعدة المحتاجين، وإطلاق المبادرات الإنسانية،
+                            والاستجابة للحالات الطارئة، وجمع أهل الخير حول هدف واحد؛ وهو تخفيف معاناة الإنسان وصناعة أثر
+                            حقيقي في المجتمع.
+                        </p>
+                        <p class="text-slate-600 leading-relaxed">
+                            لم تكن السنوات السبع مجرد فترة زمنية، بل كانت رحلة مليئة بالعطاء، والتحديات، والمواقف
+                            الإنسانية التي أكدت لنا أن الخير ما زال موجوداً، وأن تكاتف المجتمع قادر على تغيير حياة
+                            إنسان.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-gradient-to-br from-emerald-50 to-slate-100 p-8 rounded-3xl border border-slate-200/60 shadow-sm">
+                        <!-- Vision & Mission -->
+                        <div class="mb-8">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center">
+                                    <i class="fa-solid fa-bullseye"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">رسالتنا</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                نسعى إلى الوصول إلى المحتاجين وتقديم الدعم لهم بكرامة وشفافية، وتشجيع أفراد المجتمع على
+                                المشاركة في العمل الخيري والتطوعي، حتى يصبح العطاء ثقافة مستمرة وأثراً يمتد إلى أكبر عدد
+                                ممكن من المستفيدين.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div
+                                    class="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center">
+                                    <i class="fa-solid fa-eye"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-900">رؤيتنا</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                أن نكون جسراً موثوقاً بين أهل الخير والمحتاجين، وأن نساهم في بناء مجتمع أكثر تكافلاً
+                                ورحمة، يشعر فيه كل محتاج أن هناك من يقف إلى جانبه.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Values -->
+                <div class="mt-16">
+                    <div class="text-center mb-12">
+                        <h3 class="text-2xl font-bold text-slate-900">قيمنا الراسخة</h3>
+                        <p class="text-slate-500 mt-2">المبادئ التي توجه كافة أعمالنا ومبادراتنا الإنسانية</p>
+                    </div>
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div
+                            class="p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-emerald-200 hover:shadow-md transition-all">
+                            <i class="fa-solid fa-heart-pulse text-2xl text-emerald-600 mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">الرحمة</h4>
+                            <p class="text-slate-600 text-sm">نضع الإنسان واحتياجه في مقدمة أولوياتنا.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-emerald-200 hover:shadow-md transition-all">
+                            <i class="fa-solid fa-shield-halved text-2xl text-emerald-600 mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">الأمانة</h4>
+                            <p class="text-slate-600 text-sm">نحافظ على ثقة المتبرعين والمستفيدين.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-emerald-200 hover:shadow-md transition-all">
+                            <i class="fa-solid fa-glasses text-2xl text-emerald-600 mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">الشفافية</h4>
+                            <p class="text-slate-600 text-sm">نحرص على الوضوح في أعمالنا ومبادراتنا.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-emerald-200 hover:shadow-md transition-all">
+                            <i class="fa-solid fa-people-hold text-2xl text-emerald-600 mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">التكافل</h4>
+                            <p class="text-slate-600 text-sm">نؤمن أن الخير مسؤولية مشتركة.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-emerald-200 hover:shadow-md transition-all">
+                            <i class="fa-solid fa-user-shield text-2xl text-emerald-600 mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">الكرامة</h4>
+                            <p class="text-slate-600 text-sm">نقدم المساعدة بما يحفظ كرامة المستفيد.</p>
+                        </div>
+                        <div
+                            class="p-6 rounded-2xl border border-slate-100 bg-slate-50 hover:border-emerald-200 hover:shadow-md transition-all">
+                            <i class="fa-solid fa-chart-line text-2xl text-emerald-600 mb-4"></i>
+                            <h4 class="font-bold text-slate-900 mb-2">الأثر</h4>
+                            <p class="text-slate-600 text-sm">لا نبحث فقط عن تقديم المساعدة، بل عن صناعة أثر حقيقي
+                                ومستمر.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fields of Work -->
+        <section id="fields" class="py-20 bg-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-600 font-bold text-sm tracking-wider uppercase block mb-2">مجالاتنا</span>
+                    <h2 class="text-3xl font-bold text-slate-900">نقف إلى جانب المحتاجين في مختلف الظروف</h2>
+                    <p class="text-slate-600 mt-4">نسعى لتقديم الدعم الفعال بحسب نوع الحالة ودرجة الاحتياج الميداني.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Medical -->
+                    <div
+                        class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/60 hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-notes-medical"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">الحوجات العلاجية</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                نساهم في توفير تكاليف العلاج والأدوية والفحوصات للحالات التي تحتاج إلى الدعم، ونسعى لأن
+                                لا يكون العجز المادي سبباً في حرمان أي محتاج من العلاج.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Debt Relief -->
+                    <div
+                        class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/60 hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-handshake-angle"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">سداد الديون</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                نساعد في تفريج كربة الغارمين وأصحاب الديون الذين يمرون بظروف صعبة، من خلال المساهمة في
+                                سداد ما عليهم وفقاً للحالات التي يتم اعتمادها.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div
+                        class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/60 hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-6">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">حوجات الطلبة</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                ندعم الطلاب والطالبات المحتاجين، ونساهم في توفير احتياجاتهم التعليمية لمساعدتهم على
+                                مواصلة دراستهم وتحقيق أهدافهم.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seasonal Projects -->
+        <section id="projects" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-600 font-bold text-sm tracking-wider uppercase block mb-2">مشاريعنا</span>
+                    <h2 class="text-3xl font-bold text-slate-900">مبادرات موسمية مجتمعية</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Ramadan Basket -->
+                    <div
+                        class="bg-gradient-to-br from-emerald-900 to-slate-900 text-white p-8 rounded-3xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 p-8 opacity-10 text-8xl">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+                        <span
+                            class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold mb-4 inline-block">مشروع
+                            موسمي</span>
+                        <h3 class="text-2xl font-bold mb-3">سلة رمضان</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            مشروع موسمي يهدف إلى توفير السلال الغذائية للأسر المحتاجة خلال شهر رمضان، ومشاركتهم فرحة
+                            الشهر الكريم والتخفيف من أعبائهم.
+                        </p>
+                    </div>
+
+                    <!-- Eid Joy -->
+                    <div
+                        class="bg-gradient-to-br from-slate-900 to-emerald-950 text-white p-8 rounded-3xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 p-8 opacity-10 text-8xl">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+                        <span
+                            class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-3 py-1 rounded-full font-bold mb-4 inline-block">مشروع
+                            موسمي</span>
+                        <h3 class="text-2xl font-bold mb-3">فرحة عيد</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                            نسعى من خلال هذا المشروع إلى إدخال الفرحة إلى قلوب الأسر والأطفال المحتاجين في الأعياد، من
+                            خلال توفير الاحتياجات والمساهمات التي تساعدهم على استقبال العيد بفرحة وكرامة.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donate" class="py-20 bg-slate-900 text-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-emerald-400 font-bold text-sm tracking-wider uppercase block mb-2">كيف
+                        تساهم؟</span>
+                    <h2 class="text-3xl font-bold">كل مساهمة تصنع فرقاً</h2>
+                    <p class="text-slate-400 mt-4">يمكنك أن تكون جزءاً من الخير من خلال المساهمة في دعم الحالات
+                        والمشاريع التي تعمل عليها المبادرة.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Bank Transfer Card -->
+                    <div class="bg-slate-800/90 p-8 rounded-3xl border border-slate-700">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-building-columns text-2xl text-emerald-400"></i>
+                            <h3 class="text-xl font-bold">الحسابات المصرفية</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <!-- Bankak -->
+                            <div
+                                class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/50 transition-colors">
+                                <div>
+                                    <span class="text-slate-400 text-xs block mb-1">تطبيق بنكك (Bankak)</span>
+                                    <span class="text-lg font-mono font-bold text-emerald-300 select-all">3023848</span>
+                                </div>
+                                <button onclick="copyNumber('3023848', this)"
+                                    class="copy-btn bg-slate-800 hover:bg-emerald-600/20 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/40 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                                    title="نسخ الرقم">
+                                    <i class="fa-regular fa-copy text-sm"></i>
+                                    <span class="btn-text text-xs">نسخ</span>
+                                </button>
+                            </div>
+
+                            <!-- Fawry -->
+                            <div
+                                class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/50 transition-colors">
+                                <div>
+                                    <span class="text-slate-400 text-xs block mb-1">تطبيق فوري (Fawry)</span>
+                                    <span
+                                        class="text-lg font-mono font-bold text-emerald-300 select-all">51618095</span>
+                                </div>
+                                <button onclick="copyNumber('51618095', this)"
+                                    class="copy-btn bg-slate-800 hover:bg-emerald-600/20 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/40 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                                    title="نسخ الرقم">
+                                    <i class="fa-regular fa-copy text-sm"></i>
+                                    <span class="btn-text text-xs">نسخ</span>
+                                </button>
+                            </div>
+
+                            <div class="pt-2 text-sm text-slate-300 flex items-center justify-between">
+                                <div>
+                                    <span class="text-slate-400">باسم:</span> <strong class="text-white">آلاء
+                                        عبدالرحمن</strong>
+                                </div>
+                                <button onclick="copyNumber('آلاء عبدالرحمن', this, 'تم نسخ الاسم')"
+                                    class="text-xs text-slate-400 hover:text-emerald-300 transition-colors flex items-center gap-1">
+                                    <i class="fa-regular fa-copy text-xs"></i>
+                                    <span>نسخ الاسم</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Transfer Card -->
+                    <div class="bg-slate-800/90 p-8 rounded-3xl border border-slate-700">
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-mobile-screen-button text-2xl text-emerald-400"></i>
+                            <h3 class="text-xl font-bold">المساهمة عبر الرصيد</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <!-- Areeba -->
+                            <div
+                                class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/50 transition-colors">
+                                <div>
+                                    <span class="text-slate-400 text-xs block mb-1">أريبا (Areeba)</span>
+                                    <span
+                                        class="text-lg font-mono font-bold text-emerald-300 select-all">0990823331</span>
+                                </div>
+                                <button onclick="copyNumber('0990823331', this)"
+                                    class="copy-btn bg-slate-800 hover:bg-emerald-600/20 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/40 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                                    title="نسخ الرقم">
+                                    <i class="fa-regular fa-copy text-sm"></i>
+                                    <span class="btn-text text-xs">نسخ</span>
+                                </button>
+                            </div>
+
+                            <!-- Sudani -->
+                            <div
+                                class="bg-slate-900/60 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/50 transition-colors">
+                                <div>
+                                    <span class="text-slate-400 text-xs block mb-1">سوداني (Sudani)</span>
+                                    <span
+                                        class="text-lg font-mono font-bold text-emerald-300 select-all">0119841566</span>
+                                </div>
+                                <button onclick="copyNumber('0119841566', this)"
+                                    class="copy-btn bg-slate-800 hover:bg-emerald-600/20 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/40 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                                    title="نسخ الرقم">
+                                    <i class="fa-regular fa-copy text-sm"></i>
+                                    <span class="btn-text text-xs">نسخ</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Call to Action -->
+                <div
+                    class="mt-12 text-center bg-emerald-900/40 border border-emerald-500/30 p-8 rounded-3xl max-w-4xl mx-auto">
+                    <h4 class="text-xl font-bold mb-3">تواصل معنا ومتابعة الحالات</h4>
+                    <p class="text-slate-300 text-sm mb-6">للاستفسارات، متابعة الحالات، المساهمة، أو الرغبة في التعاون
+                        مع المبادرة</p>
+                    <a href="https://chat.whatsapp.com/JxMWrPjswZoGB5IoP1OgFv?s=cl&p=a&ilr=0" target="_blank"
+                        class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold px-6 py-3 rounded-xl transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>انضم لقروب الواتساب الرسمي</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-5 py-3 rounded-2xl shadow-xl border border-emerald-400/40 flex items-center gap-3 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 z-50">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toast-message" class="text-sm font-bold">تم نسخ الرقم بنجاح!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <img src="logo.jpg" alt="شعار فزعة المحتاج" class="w-10 h-10 rounded-full object-cover border border-slate-700">
+                <div>
+                    <p class="text-sm text-slate-300 font-semibold">مبادرة فزعة المحتاج الخيرية</p>
+                    <p class="text-xs text-slate-500">جميع الحقوق محفوظة ©</p>
+                </div>
+            </div>
+            <div class="flex gap-4 text-xs font-semibold text-emerald-400">
+                <span>#فزعة_المحتاج</span>
+                <span>#يلا_نسندهم</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copy to Clipboard Script -->
+    <script>
+        function copyNumber(text, btn, customMessage) {
+            const message = customMessage || `تم نسخ (${text}) بنجاح!`;
+
+            // Clipboard API with fallback
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => showFeedback(btn, message)).catch(() => fallbackCopy(text, btn, message));
+            } else {
+                fallbackCopy(text, btn, message);
+            }
+        }
+
+        function fallbackCopy(text, btn, message) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showFeedback(btn, message);
+            } catch (err) {
+                console.error('Fallback copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showFeedback(btn, message) {
+            // Button visual feedback
+            if (btn) {
+                const icon = btn.querySelector('i');
+                const text = btn.querySelector('.btn-text');
+                const originalIconClass = icon ? icon.className : '';
+                const originalText = text ? text.textContent : '';
+
+                if (icon) icon.className = 'fa-solid fa-check text-emerald-400';
+                if (text) text.textContent = 'تم النسخ!';
+                btn.classList.add('border-emerald-500', 'bg-emerald-950/60', 'text-emerald-300');
+
+                setTimeout(() => {
+                    if (icon) icon.className = originalIconClass;
+                    if (text) text.textContent = originalText;
+                    btn.classList.remove('border-emerald-500', 'bg-emerald-950/60', 'text-emerald-300');
+                }, 2000);
+            }
+
+            // Toast feedback
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            if (toast && toastMessage) {
+                toastMessage.textContent = message;
+                toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                toast.classList.add('opacity-100', 'translate-y-0');
+
+                setTimeout(() => {
+                    toast.classList.remove('opacity-100', 'translate-y-0');
+                    toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                }, 2500);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
+```
