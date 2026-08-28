@@ -1,0 +1,106 @@
+{% extends 'home/dashboard/base.html' %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <div>
+            <h1 class="text-2xl font-extrabold text-slate-900">طلبات التطوع</h1>
+            <p class="text-sm text-slate-500">{{ applicants|length }} طلب — {{ volunteers_total }} إجمالي</p>
+        </div>
+    </div>
+
+    <!-- Status filter -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 mb-6 flex flex-wrap gap-2">
+        <a href="{% url 'dashboard_volunteers' %}" class="px-4 py-1.5 rounded-lg text-sm font-bold {% if not current_status_filter %}bg-emerald-600 text-white{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">الكل</a>
+        {% for value, label in status_choices %}
+        <a href="{% url 'dashboard_volunteers' %}?status={{ value }}" class="px-4 py-1.5 rounded-lg text-sm font-bold {% if current_status_filter == value %}bg-emerald-600 text-white{% else %}bg-slate-100 text-slate-600 hover:bg-slate-200{% endif %}">{{ label }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        {% if applicants %}
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-slate-50 text-slate-600 text-xs">
+                        <th class="px-4 py-3 font-bold text-right">الاسم</th>
+                        <th class="px-4 py-3 font-bold text-right">الجوال</th>
+                        <th class="px-4 py-3 font-bold text-right">البريد</th>
+                        <th class="px-4 py-3 font-bold text-right">المدينة</th>
+                        <th class="px-4 py-3 font-bold text-right">الاهتمامات</th>
+                        <th class="px-4 py-3 font-bold text-right">التاريخ</th>
+                        <th class="px-4 py-3 font-bold text-right">الحالة</th>
+                        <th class="px-4 py-3 font-bold text-right">إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    {% for a in applicants %}
+                    <tr class="hover:bg-slate-50 align-top">
+                        <td class="px-4 py-3 font-bold text-slate-800">{{ a.full_name }}</td>
+                        <td class="px-4 py-3 text-slate-600" dir="ltr">{{ a.phone }}</td>
+                        <td class="px-4 py-3 text-slate-600">{{ a.email|default:"—" }}</td>
+                        <td class="px-4 py-3 text-slate-600">{{ a.city|default:"—" }}</td>
+                        <td class="px-4 py-3 text-slate-600 max-w-[180px]"><span class="line-clamp-2">{{ a.interest|default:"—" }}</span></td>
+                        <td class="px-4 py-3 text-slate-500 whitespace-nowrap">{{ a.created_at|date:"Y-m-d" }}</td>
+                        <td class="px-4 py-3">
+                            <select data-pk="{{ a.pk }}" data-url="{% url 'dashboard_volunteer_status' a.pk %}"
+                                class="status-select text-xs font-bold rounded-lg border px-2 py-1.5 cursor-pointer
+                                {% if a.status == 'accepted' %}bg-emerald-50 border-emerald-300 text-emerald-700
+                                {% elif a.status == 'rejected' %}bg-rose-50 border-rose-300 text-rose-700
+                                {% elif a.status == 'contacted' %}bg-amber-50 border-amber-300 text-amber-700
+                                {% else %}bg-blue-50 border-blue-300 text-blue-700{% endif %}">
+                                {% for value, label in status_choices %}
+                                <option value="{{ value }}" {% if a.status == value %}selected{% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td class="px-4 py-3">
+                            <details class="text-xs">
+                                <summary class="cursor-pointer text-emerald-600 hover:text-emerald-800 font-bold">تفاصيل</summary>
+                                <div class="mt-2 space-y-2 p-3 bg-slate-50 rounded-lg text-slate-600 min-w-[240px]">
+                                    <p><strong>التوفر:</strong> {{ a.availability|default:"—" }}</p>
+                                    <p><strong>الرسالة:</strong> {{ a.message|default:"—" }}</p>
+                                </div>
+                            </details>
+                            <form method="post" action="{% url 'dashboard_volunteer_delete' a.pk %}" onsubmit="return confirm('حذف طلب {{ a.full_name }}؟');" class="mt-2">
+                                {% csrf_token %}
+                                <button type="submit" class="text-rose-500 hover:text-rose-700 font-bold cursor-pointer"><i class="fa-solid fa-trash"></i> حذف</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="p-10 text-center text-slate-400 text-sm">
+            <i class="fa-solid fa-inbox text-3xl mb-3 block"></i>
+            لا توجد طلبات.
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.status-select').forEach(sel => {
+        sel.addEventListener('change', async () => {
+            const newClass = sel.value === 'accepted' ? 'bg-emerald-50 border-emerald-300 text-emerald-700'
+                : sel.value === 'rejected' ? 'bg-rose-50 border-rose-300 text-rose-700'
+                : sel.value === 'contacted' ? 'bg-amber-50 border-amber-300 text-amber-700'
+                : 'bg-blue-50 border-blue-300 text-blue-700';
+            sel.className = 'status-select text-xs font-bold rounded-lg border px-2 py-1.5 cursor-pointer ' + newClass;
+            try {
+                const formData = new FormData();
+                formData.append('status', sel.value);
+                await fetch(sel.dataset.url, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'X-CSRFToken': '{{ csrf_token }}' }
+                });
+            } catch (e) {
+                console.error(e);
+            }
+        });
+    });
+</script>
+{% endblock %}

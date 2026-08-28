@@ -1,0 +1,44 @@
+{% extends 'home/dashboard/base.html' %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto">
+    <div class="flex items-center gap-3 mb-6">
+        <a href="{% url 'dashboard_section_list' section.urlslug %}" class="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-emerald-600 hover:border-emerald-300 hover:bg-emerald-50 transition-colors">
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <div>
+            <h1 class="text-2xl font-extrabold text-slate-900">تعديل {{ section.verbose }}</h1>
+            <p class="text-sm text-slate-500">{{ object }}</p>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <form method="post" enctype="multipart/form-data" class="p-6">
+            {% csrf_token %}
+            <div class="grid sm:grid-cols-2 gap-5">
+                {% for field in form %}
+                <div {% if field.field.widget.input_type == 'textarea' or field.name == 'description' or field.name == 'subtitle' %}class="sm:col-span-2"{% endif %}>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<p class="text-[11px] text-slate-400 mt-1">{{ field.help_text }}</p>{% endif %}
+                    {% if field.errors %}<p class="text-[11px] text-rose-500 mt-1">{{ field.errors|striptags }}</p>{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            {% if form.non_field_errors %}
+            <div class="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl text-sm mt-4">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+
+            <div class="flex justify-end gap-3 pt-5 mt-5 border-t border-slate-100">
+                <a href="{% url 'dashboard_section_list' section.urlslug %}" class="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-700">إلغاء</a>
+                <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold shadow-sm transition-colors cursor-pointer">
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ التغييرات
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

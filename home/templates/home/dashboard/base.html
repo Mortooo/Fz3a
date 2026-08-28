@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | فزعة المحتاج</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-slate-900 text-white flex flex-col flex-shrink-0 hidden lg:flex">
+            <div class="p-5 border-b border-slate-800 flex items-center gap-3">
+                <img src="/logo.jpg" alt="الشعار" class="w-10 h-10 rounded-full object-cover border border-emerald-500/40">
+                <div>
+                    <p class="font-black text-emerald-400 leading-tight">لوحة التحكم</p>
+                    <p class="text-xs text-slate-400">فزعة المحتاج</p>
+                </div>
+            </div>
+            <nav class="flex-1 py-4 space-y-1 overflow-y-auto">
+                <a href="{% url 'dashboard_settings' %}"
+                   class="flex items-center gap-3 px-5 py-2.5 text-sm font-bold transition-colors {% if active_tab == 'settings' %}bg-emerald-600 text-white{% else %}text-slate-300 hover:bg-slate-800{% endif %}">
+                    <i class="fa-solid fa-gear w-5 text-center"></i> إعدادات الموقع
+                </a>
+                {% for slug, label, icon in section_tabs %}
+                <a href="{% url 'dashboard_section_list' slug %}"
+                   class="flex items-center gap-3 px-5 py-2.5 text-sm font-bold transition-colors {% if active_tab == slug %}bg-emerald-600 text-white{% else %}text-slate-300 hover:bg-slate-800{% endif %}">
+                    <i class="{{ icon }} w-5 text-center"></i> {{ label }}
+                </a>
+                {% endfor %}
+                <a href="{% url 'dashboard_volunteers' %}"
+                   class="flex items-center gap-3 px-5 py-2.5 text-sm font-bold transition-colors {% if active_tab == 'volunteers' %}bg-emerald-600 text-white{% else %}text-slate-300 hover:bg-slate-800{% endif %}">
+                    <i class="fa-solid fa-hand-holding-heart w-5 text-center"></i> طلبات التطوع
+                    {% if new_volunteers %}
+                    <span class="mr-auto text-xs bg-rose-500 text-white px-2 py-0.5 rounded-full">{{ new_volunteers }}</span>
+                    {% endif %}
+                </a>
+            </nav>
+            <div class="p-4 border-t border-slate-800 space-y-2">
+                <a href="/" target="_blank" class="flex items-center gap-3 px-5 py-2.5 text-sm font-bold text-slate-300 hover:text-emerald-400 transition-colors">
+                    <i class="fa-solid fa-eye w-5 text-center"></i> عرض الموقع
+                </a>
+                <form method="post" action="{% url 'admin:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="flex items-center gap-3 px-5 py-2.5 w-full text-sm font-bold text-slate-300 hover:text-rose-400 transition-colors cursor-pointer">
+                        <i class="fa-solid fa-right-from-bracket w-5 text-center"></i> تسجيل الخروج
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <div class="flex-1 flex flex-col min-w-0">
+            <!-- Mobile top bar -->
+            <header class="lg:hidden bg-slate-900 text-white p-4 flex items-center justify-between sticky top-0 z-20">
+                <p class="font-black text-emerald-400">لوحة التحكم</p>
+                <form method="post" action="{% url 'admin:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="text-sm text-slate-300 hover:text-rose-400 cursor-pointer">
+                        <i class="fa-solid fa-right-from-bracket"></i> خروج
+                    </button>
+                </form>
+            </header>
+            <!-- Mobile nav -->
+            <nav class="lg:hidden bg-white border-b border-slate-200 p-2 flex gap-2 overflow-x-auto sticky top-[57px] z-20">
+                <a href="{% url 'dashboard_settings' %}" class="px-3 py-1.5 text-xs font-bold rounded-lg whitespace-nowrap {% if active_tab == 'settings' %}bg-emerald-600 text-white{% else %}bg-slate-100 text-slate-600{% endif %}">الإعدادات</a>
+                {% for slug, label, icon in section_tabs %}
+                <a href="{% url 'dashboard_section_list' slug %}" class="px-3 py-1.5 text-xs font-bold rounded-lg whitespace-nowrap {% if active_tab == slug %}bg-emerald-600 text-white{% else %}bg-slate-100 text-slate-600{% endif %}">{{ label }}</a>
+                {% endfor %}
+                <a href="{% url 'dashboard_volunteers' %}" class="px-3 py-1.5 text-xs font-bold rounded-lg whitespace-nowrap {% if active_tab == 'volunteers' %}bg-emerald-600 text-white{% else %}bg-slate-100 text-slate-600{% endif %}">التطوع
+                    {% if new_volunteers %}<span class="bg-rose-500 text-white px-1.5 rounded-full">{{ new_volunteers }}</span>{% endif %}
+                </a>
+            </nav>
+
+            <main class="flex-1 p-4 sm:p-6 lg:p-8">
+                {% if messages %}
+                <div class="mb-6 space-y-2">
+                    {% for message in messages %}
+                    <div class="bg-emerald-50 border border-emerald-200 text-emerald-800 px-4 py-3 rounded-xl text-sm font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i> {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% block content %}{% endblock %}
+            </main>
+
+            <footer class="p-4 text-center text-xs text-slate-400 border-t border-slate-200 bg-white">
+                مبادرة فزعة المحتاج الخيرية © جميع الحقوق محفوظة — لوحة التحكم
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

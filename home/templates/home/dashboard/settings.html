@@ -1,0 +1,124 @@
+{% extends 'home/dashboard/base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <div class="flex items-center justify-between mb-6">
+        <div>
+            <h1 class="text-2xl font-extrabold text-slate-900">إعدادات الموقع</h1>
+            <p class="text-sm text-slate-500">تعديل النصوص الأساسية ومعلومات المبادرة</p>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 bg-slate-50 flex items-center gap-2">
+            <i class="fa-solid fa-image text-emerald-600"></i>
+            <span class="text-sm font-bold text-slate-700">الشعار الحالي:
+                {% if settings_obj.logo %}{{ settings_obj.logo.name }}{% else %}logo.jpg (الافتراضي){% endif %}
+            </span>
+            <a href="/admin/home/sitesettings/1/change/" class="mr-auto text-xs font-bold text-emerald-600 hover:text-emerald-700">تغيير الشعار في لوحة دجانجو <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+
+        <form method="post" class="p-6 space-y-6">
+            {% csrf_token %}
+
+            <div>
+                <h3 class="text-sm font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-building-columns"></i> الهوية</h3>
+                <div class="grid sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.site_name.label }}</label>
+                        {{ form.site_name }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.tagline.label }}</label>
+                        {{ form.tagline }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.hashtag.label }}</label>
+                        {{ form.hashtag }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-5">
+                <h3 class="text-sm font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-bullhorn"></i> الواجهة الرئيسية</h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.hero_headline.label }}</label>
+                        {{ form.hero_headline }}
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.hero_intro.label }}</label>
+                        {{ form.hero_intro }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-5">
+                <h3 class="text-sm font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-book-open"></i> القصة / الرسالة / الرؤية</h3>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.story_badge.label }}</label>
+                        {{ form.story_badge }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.story_headline.label }}</label>
+                        {{ form.story_headline }}
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.story_paragraphs.label }}</label>
+                        {{ form.story_paragraphs }}
+                        <p class="text-[11px] text-slate-400 mt-1">{{ form.story_paragraphs.help_text }}</p>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.mission_title.label }}</label>
+                        {{ form.mission_title }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.vision_title.label }}</label>
+                        {{ form.vision_title }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.mission_text.label }}</label>
+                        {{ form.mission_text }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.vision_text.label }}</label>
+                        {{ form.vision_text }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-100 pt-5">
+                <h3 class="text-sm font-bold text-emerald-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-link"></i> الروابط والتبرع</h3>
+                <div class="grid sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.whatsapp_link.label }}</label>
+                        {{ form.whatsapp_link }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.facebook_link.label }}</label>
+                        {{ form.facebook_link }}
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 mb-1">{{ form.donation_name.label }}</label>
+                        {{ form.donation_name }}
+                    </div>
+                </div>
+            </div>
+
+            {% if form.non_field_errors %}
+            <div class="bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl text-sm">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+
+            <div class="flex justify-end gap-3 pt-4 border-t border-slate-100">
+                <a href="/" class="px-5 py-2.5 rounded-xl text-sm font-bold text-slate-500 hover:text-slate-700">إلغاء</a>
+                <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold shadow-sm transition-colors cursor-pointer">
+                    <i class="fa-solid fa-floppy-disk"></i> حفظ التغييرات
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

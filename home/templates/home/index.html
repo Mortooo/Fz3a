@@ -195,6 +195,18 @@
 
                 <!-- CTA Button -->
                 <div class="flex items-center gap-2 sm:gap-3">
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'dashboard' %}"
+                        title="لوحة التحكم"
+                        class="bg-slate-100 hover:bg-emerald-50 text-slate-700 border border-slate-200 hover:border-emerald-400 w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center flex-shrink-0">
+                        <i class="fa-solid fa-gauge-high text-emerald-600 text-sm sm:text-base"></i>
+                    </a>
+                    {% endif %}
+                    <button type="button" onclick="openVolunteerModal()"
+                        title="انضم كمتطوع"
+                        class="bg-slate-100 hover:bg-emerald-50 text-slate-700 border border-slate-200 hover:border-emerald-400 w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center cursor-pointer flex-shrink-0">
+                        <i class="fa-solid fa-users text-emerald-600 text-sm sm:text-base"></i>
+                    </button>
                     <a href="#donate"
                         class="btn-shimmer bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 hover:-translate-y-0.5 active:scale-95 flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
                         <i class="fa-solid fa-heart text-xs text-rose-300"></i>
@@ -576,11 +588,91 @@
                             <i class="fa-brands fa-facebook text-2xl"></i>
                             <span>انضم لمجموعة الفيسبوك</span>
                         </a>
+                        <button type="button" onclick="openVolunteerModal()"
+                            class="btn-shimmer inline-flex items-center gap-2.5 bg-slate-700 hover:bg-slate-600 text-white font-black px-7 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-slate-600/30 hover:-translate-y-0.5 active:scale-95 text-base cursor-pointer">
+                            <i class="fa-solid fa-hand-holding-heart text-2xl text-emerald-400"></i>
+                            <span>سجّل كمتطوع</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Volunteer Registration Modal -->
+    <div id="volunteer-modal"
+        class="fixed inset-0 z-[60] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none"
+        onclick="if(event.target === this) closeVolunteerModal()">
+        <div class="relative w-full max-w-lg bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col max-h-[90vh] scale-95 transition-transform duration-300" id="volunteer-container">
+            <!-- Close Button -->
+            <button type="button" onclick="closeVolunteerModal()" class="absolute top-4 left-4 z-10 w-10 h-10 rounded-full bg-slate-800/80 hover:bg-rose-600 text-white flex items-center justify-center transition-colors shadow-lg cursor-pointer" title="إغلاق">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="p-6 pb-4 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl flex-shrink-0">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-bold text-white">سجّل كمتطوع</h3>
+                        <p class="text-xs sm:text-sm text-slate-400">انضم إلى عائلة فزعة المحتاج وكن جزءاً من صناعة الأثر</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="volunteer-form" class="p-6 overflow-y-auto flex flex-col gap-4" novalidate>
+                {% csrf_token %}
+                <div>
+                    <label for="{{ volunteer_form.full_name.id_for_label }}" class="block text-sm font-bold text-slate-300 mb-1.5">الاسم الكامل <span class="text-rose-400">*</span></label>
+                    {{ volunteer_form.full_name }}
+                    <p class="text-xs text-rose-400 mt-1 hidden" data-error-for="full_name"></p>
+                </div>
+                <div>
+                    <label for="{{ volunteer_form.phone.id_for_label }}" class="block text-sm font-bold text-slate-300 mb-1.5">رقم الجوال / واتساب <span class="text-rose-400">*</span></label>
+                    {{ volunteer_form.phone }}
+                    <p class="text-xs text-rose-400 mt-1 hidden" data-error-for="phone"></p>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="{{ volunteer_form.email.id_for_label }}" class="block text-sm font-bold text-slate-300 mb-1.5">البريد الإلكتروني</label>
+                        {{ volunteer_form.email }}
+                        <p class="text-xs text-rose-400 mt-1 hidden" data-error-for="email"></p>
+                    </div>
+                    <div>
+                        <label for="{{ volunteer_form.city.id_for_label }}" class="block text-sm font-bold text-slate-300 mb-1.5">المدينة</label>
+                        {{ volunteer_form.city }}
+                        <p class="text-xs text-rose-400 mt-1 hidden" data-error-for="city"></p>
+                    </div>
+                </div>
+                <div>
+                    <label for="{{ volunteer_form.interest.id_for_label }}" class="block text-sm font-bold text-slate-300 mb-1.5">مجالات الاهتمام أو الخبرات</label>
+                    {{ volunteer_form.interest }}
+                    <p class="text-xs text-rose-400 mt-1 hidden" data-error-for="interest"></p>
+                </div>
+                <div>
+                    <label for="{{ volunteer_form.availability.id_for_label }}" class="block text-sm font-bold text-slate-300 mb-1.5">أوقات التوفر</label>
+                    {{ volunteer_form.availability }}
+                    <p class="text-xs text-rose-400 mt-1 hidden" data-error-for="availability"></p>
+                </div>
+                <div>
+                    <label for="{{ volunteer_form.message.id_for_label }}" class="block text-sm font-bold text-slate-300 mb-1.5">رسالة إضافية</label>
+                    {{ volunteer_form.message }}
+                    <p class="text-xs text-rose-400 mt-1 hidden" data-error-for="message"></p>
+                </div>
+
+                <div class="sticky bottom-0 pt-2 mt-1">
+                    <button type="submit" id="volunteer-submit"
+                        class="w-full btn-shimmer bg-emerald-600 hover:bg-emerald-500 text-white font-black px-6 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-emerald-600/30 active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>إرسال طلب التطوع</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Toast Notification -->
     <div id="toast"
@@ -886,13 +978,132 @@
 
         // Close Lightbox with Escape key and navigate with arrow keys
         document.addEventListener('keydown', (e) => {
-            const modal = document.getElementById('lightbox-modal');
-            const isOpen = modal && !modal.classList.contains('opacity-0');
+            const vModal = document.getElementById('volunteer-modal');
+            const vIsOpen = vModal && !vModal.classList.contains('opacity-0');
             if (e.key === 'Escape') {
                 closeLightbox();
-            } else if (isOpen && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                closeVolunteerModal();
+            } else if (vIsOpen) {
+                return;
+            }
+            const modal = document.getElementById('lightbox-modal');
+            const isOpen = modal && !modal.classList.contains('opacity-0');
+            if (isOpen && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
                 navigateLightbox(e.key === 'ArrowRight' ? 1 : -1);
             }
+        });
+
+        // 6. Volunteer Registration Modal
+        function openVolunteerModal() {
+            const modal = document.getElementById('volunteer-modal');
+            const container = document.getElementById('volunteer-container');
+            if (!modal) return;
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            if (container) {
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }
+            document.body.style.overflow = 'hidden';
+            clearVolunteerErrors();
+            const form = document.getElementById('volunteer-form');
+            if (form) form.reset();
+        }
+
+        function closeVolunteerModal() {
+            const modal = document.getElementById('volunteer-modal');
+            const container = document.getElementById('volunteer-container');
+            if (modal) {
+                modal.classList.remove('opacity-100');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                if (container) {
+                    container.classList.remove('scale-100');
+                    container.classList.add('scale-95');
+                }
+                const lb = document.getElementById('lightbox-modal');
+                if (!lb || lb.classList.contains('opacity-0')) {
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        function clearVolunteerErrors() {
+            document.querySelectorAll('[data-error-for]').forEach(el => {
+                el.classList.add('hidden');
+                el.textContent = '';
+            });
+        }
+
+        function setVolunteerError(field, message) {
+            const el = document.querySelector(`[data-error-for="${field}"]`);
+            if (el) {
+                el.textContent = message;
+                el.classList.remove('hidden');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('volunteer-form');
+            if (!form) return;
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearVolunteerErrors();
+
+                const submitBtn = document.getElementById('volunteer-submit');
+                const originalHtml = submitBtn ? submitBtn.innerHTML : '';
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>جارٍ الإرسال...</span>';
+                }
+
+                try {
+                    const resp = await fetch('/volunteer/', {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                        },
+                    });
+                    const data = await resp.json();
+
+                    if (data.ok) {
+                        const toast = document.getElementById('toast');
+                        const toastMessage = document.getElementById('toast-message');
+                        if (toast && toastMessage) {
+                            toastMessage.textContent = 'تم استلام طلبك بنجاح! سنتواصل معك قريباً بإذن الله';
+                            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
+                            toast.classList.add('opacity-100', 'translate-y-0');
+                            setTimeout(() => {
+                                toast.classList.remove('opacity-100', 'translate-y-0');
+                                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
+                            }, 3500);
+                        }
+                        closeVolunteerModal();
+                    } else if (data.errors) {
+                        for (const [field, messages] of Object.entries(data.errors)) {
+                            setVolunteerError(field, messages[0]);
+                        }
+                    }
+                } catch (err) {
+                    console.error('Volunteer submit failed', err);
+                    const toast = document.getElementById('toast');
+                    const toastMessage = document.getElementById('toast-message');
+                    if (toast && toastMessage) {
+                        toastMessage.textContent = 'حدث خطأ، حاول مرة أخرى';
+                        toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
+                        toast.classList.add('opacity-100', 'translate-y-0');
+                        setTimeout(() => {
+                            toast.classList.remove('opacity-100', 'translate-y-0');
+                            toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
+                        }, 3000);
+                    }
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalHtml;
+                    }
+                }
+            });
         });
     </script>
 

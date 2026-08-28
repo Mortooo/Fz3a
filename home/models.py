@@ -146,6 +146,35 @@ class GalleryItem(models.Model):
         return ""
 
 
+class VolunteerApplication(models.Model):
+    """طلبات التسجيل للتطوع"""
+
+    class Status(models.TextChoices):
+        NEW = 'new', 'جديد'
+        CONTACTED = 'contacted', 'تم التواصل'
+        ACCEPTED = 'accepted', 'مقبول'
+        REJECTED = 'rejected', 'مرفوض'
+
+    class Meta:
+        verbose_name = "طلب تطوع"
+        verbose_name_plural = "طلبات التطوع"
+        ordering = ['-created_at']
+
+    full_name = models.CharField("الاسم الكامل", max_length=200)
+    phone = models.CharField("رقم الجوال / واتساب", max_length=50)
+    email = models.EmailField("البريد الإلكتروني", blank=True, default="")
+    city = models.CharField("المدينة", max_length=100, blank=True, default="")
+    interest = models.TextField("مجالات الاهتمام أو الخبرات", blank=True, default="",
+                                help_text="مثال: العمل الميداني، التواصل، التصوير، الطب، التقنية...")
+    availability = models.CharField("أوقات التوفر", max_length=200, blank=True, default="")
+    message = models.TextField("رسالة إضافية", blank=True, default="")
+    status = models.CharField("الحالة", max_length=20, choices=Status.choices, default=Status.NEW)
+    created_at = models.DateTimeField("تاريخ التقديم", auto_now_add=True)
+
+    def __str__(self):
+        return self.full_name or "طلب تطوع"
+
+
 class DonationMethod(models.Model):
     """طرق المساهمة: الحسابات المصرفية والرصيد"""
 

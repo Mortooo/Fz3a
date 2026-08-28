@@ -1,0 +1,82 @@
+{% extends 'home/dashboard/base.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <div>
+            <h1 class="text-2xl font-extrabold text-slate-900">{{ section.verbose|default:'' }} — القائمة</h1>
+            <p class="text-sm text-slate-500">{{ objects|length }} عنصر</p>
+        </div>
+    </div>
+
+    <!-- Add new form -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-6">
+        <div class="px-6 py-3.5 border-b border-slate-100 bg-slate-50 flex items-center gap-2">
+            <i class="fa-solid fa-plus-circle text-emerald-600"></i>
+            <span class="text-sm font-bold text-slate-700">إضافة جديد</span>
+        </div>
+        <form method="post" enctype="multipart/form-data" class="p-6">
+            {% csrf_token %}
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for field in form %}
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}<p class="text-[11px] text-rose-500 mt-1">{{ field.errors|striptags }}</p>{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="flex justify-end mt-5">
+                <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold shadow-sm transition-colors cursor-pointer">
+                    <i class="fa-solid fa-plus"></i> إضافة
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        {% if rows %}
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-slate-50 text-slate-600 text-xs">
+                        {% for header in row_headers %}
+                        <th class="px-4 py-3 font-bold text-right">{{ header }}</th>
+                        {% endfor %}
+                        <th class="px-4 py-3 font-bold text-right">إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    {% for pk, row in rows %}
+                    <tr class="hover:bg-slate-50">
+                        {% for value in row.values %}
+                        <td class="px-4 py-3 text-slate-700">{{ value|safe }}</td>
+                        {% endfor %}
+                        <td class="px-4 py-3">
+                            <div class="flex items-center gap-2">
+                                <a href="{% url 'dashboard_section_edit' section.urlslug pk %}" class="text-emerald-600 hover:text-emerald-800 text-xs font-bold">
+                                    <i class="fa-solid fa-pen"></i> تعديل
+                                </a>
+                                <form method="post" action="{% url 'dashboard_section_delete' section.urlslug pk %}" onsubmit="return confirm('هل أنت متأكد من الحذف؟');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="text-rose-500 hover:text-rose-700 text-xs font-bold cursor-pointer">
+                                        <i class="fa-solid fa-trash"></i> حذف
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="p-10 text-center text-slate-400 text-sm">
+            <i class="fa-solid fa-inbox text-3xl mb-3 block"></i>
+            لا توجد عناصر بعد. أضف أول عنصر من النموذج أعلاه.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
