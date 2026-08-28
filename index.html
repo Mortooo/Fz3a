@@ -5,6 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مبادرة فزعة المحتاج الخيرية | #يلا_نسندهم</title>
+    <meta name="description" content="مبادرة فزعة المحتاج الخيرية - مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة في المجالات العلاجية والتعليمية وسداد الديون والمشاريع الموسمية. #يلا_نسندهم">
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="مبادرة فزعة المحتاج الخيرية">
+    <meta property="og:title" content="مبادرة فزعة المحتاج الخيرية | #يلا_نسندهم">
+    <meta property="og:description" content="مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة. معاً نصنع أثراً… ومعاً نمد يد العون. #يلا_نسندهم">
+    <meta property="og:image" content="logo.jpg">
+    <meta property="og:url" content="https://Mortooo.github.io/Fz3a/">
+    <meta property="og:locale" content="ar_AR">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="مبادرة فزعة المحتاج الخيرية | #يلا_نسندهم">
+    <meta name="twitter:description" content="مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة. معاً نصنع أثراً… ومعاً نمد يد العون.">
+    <meta name="twitter:image" content="logo.jpg">
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "مبادرة فزعة المحتاج الخيرية",
+        "alternateName": "Fz3a",
+        "description": "مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة في المجالات العلاجية والتعليمية وسداد الديون والمشاريع الموسمية.",
+        "url": "https://Mortooo.github.io/Fz3a/",
+        "logo": "logo.jpg",
+        "sameAs": [
+            "https://chat.whatsapp.com/JxMWrPjswZoGB5IoP1OgFv?s=cl&p=a&ilr=0",
+            "https://facebook.com/groups/971459819951254/"
+        ]
+    }
+    </script>
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     <!-- Tailwind CSS CDN -->
@@ -223,6 +253,21 @@
                         <i class="fa-brands fa-facebook text-blue-400 text-xl"></i>
                         <span>مجموعة الفيسبوك</span>
                     </a>
+                </div>
+
+                <!-- Social Share Row -->
+                <div class="reveal delay-500 flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-8">
+                    <span class="text-slate-400 text-xs sm:text-sm font-bold ml-1">شارك المبادرة وتكاثر الخير:</span>
+                    <button onclick="shareTo('whatsapp')"
+                        class="bg-emerald-600/20 hover:bg-emerald-600/40 border border-emerald-500/40 text-emerald-300 font-bold px-4 py-2 rounded-full text-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>واتساب</span>
+                    </button>
+                    <button onclick="shareTo('facebook')"
+                        class="bg-blue-600/20 hover:bg-blue-600/40 border border-blue-500/40 text-blue-300 font-bold px-4 py-2 rounded-full text-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <span>فيسبوك</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -502,7 +547,7 @@
                     <div class="gallery-item photo reveal delay-100 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
                         <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.35 PM.jpeg', 'تجهيز وتوزيع السلال الغذائية الرمضانية')">
                             <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.35 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                                 <div class="text-white">
                                     <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
@@ -519,7 +564,7 @@
                     <div class="gallery-item photo reveal delay-200 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
                         <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (1).jpeg', 'مشاريع العطاء والإغاثة الميدانية')">
                             <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (1).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                                 <div class="text-white">
                                     <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
@@ -536,7 +581,7 @@
                     <div class="gallery-item photo reveal delay-300 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
                         <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (2).jpeg', 'توصيل المساعدات للأسر المتعففة')">
                             <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (2).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                                 <div class="text-white">
                                     <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
@@ -553,7 +598,7 @@
                     <div class="gallery-item photo reveal delay-100 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
                         <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM.jpeg', 'وقفات التكاتف والمساندة المجتمعية')">
                             <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                                 <div class="text-white">
                                     <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
@@ -570,7 +615,7 @@
                     <div class="gallery-item photo reveal delay-200 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
                         <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM.jpeg', 'تأمين الاحتياجات الأساسية للمحتاجين')">
                             <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                                 <div class="text-white">
                                     <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
@@ -587,7 +632,7 @@
                     <div class="gallery-item photo reveal delay-300 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
                         <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM (1).jpeg', 'إشراف وتنسيق فريق فزعة المحتاج')">
                             <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM (1).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500">
+                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                                 <div class="text-white">
                                     <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
@@ -828,21 +873,36 @@
             <button onclick="closeLightbox()" class="absolute top-4 left-4 z-10 w-10 h-10 rounded-full bg-slate-800/80 hover:bg-rose-600 text-white flex items-center justify-center transition-colors shadow-lg cursor-pointer" title="إغلاق">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
-            
+
+            <!-- Prev/Next Navigation -->
+            <button onclick="navigateLightbox(-1)" class="absolute top-1/2 -translate-y-1/2 right-4 z-10 w-11 h-11 rounded-full bg-slate-800/70 hover:bg-emerald-600/80 text-white flex items-center justify-center transition-all shadow-lg cursor-pointer" title="السابق">
+                <i class="fa-solid fa-chevron-down rotate-90 text-lg"></i>
+            </button>
+            <button onclick="navigateLightbox(1)" class="absolute top-1/2 -translate-y-1/2 left-4 z-10 w-11 h-11 rounded-full bg-slate-800/70 hover:bg-emerald-600/80 text-white flex items-center justify-center transition-all shadow-lg cursor-pointer" title="التالي">
+                <i class="fa-solid fa-chevron-down -rotate-90 text-lg"></i>
+            </button>
+
             <!-- Image View -->
             <div class="w-full max-h-[75vh] bg-black flex items-center justify-center overflow-hidden">
                 <img id="lightbox-img" src="" alt="عرض الصورة" class="max-w-full max-h-[75vh] object-contain">
             </div>
-            
+
             <!-- Caption -->
-            <div class="p-4 sm:p-5 bg-slate-900 border-t border-slate-800 flex items-center justify-between">
+            <div class="p-4 sm:p-5 bg-slate-900 border-t border-slate-800 flex items-center justify-between gap-3 flex-wrap">
                 <div>
                     <span class="text-emerald-400 text-xs font-bold block mb-1">مبادرة فزعة المحتاج الخيرية</span>
                     <h4 id="lightbox-caption" class="text-white font-bold text-sm sm:text-base"></h4>
                 </div>
-                <button onclick="closeLightbox()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer">
-                    إغلاق
-                </button>
+                <div class="flex items-center gap-2">
+                    <a id="lightbox-download" href="#" download
+                        class="px-4 py-2 bg-slate-800 hover:bg-emerald-600/80 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i>
+                        <span>تحميل</span>
+                    </a>
+                    <button onclick="closeLightbox()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-bold transition-colors cursor-pointer">
+                        إغلاق
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -879,6 +939,11 @@
                         title="فيسبوك">
                         <i class="fa-brands fa-facebook-f text-base"></i>
                     </a>
+                    <button onclick="shareTo('whatsapp')"
+                        class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white flex items-center justify-center transition-all hover:scale-110"
+                        title="مشاركة عبر واتساب">
+                        <i class="fa-solid fa-share-nodes text-base"></i>
+                    </button>
                 </div>
                 <div class="flex gap-4 text-xs font-bold text-emerald-400">
                     <span>#فزعة_المحتاج</span>
@@ -984,6 +1049,22 @@
             }, { passive: true });
         });
 
+        // 3.5 Social Share Functionality
+        function shareTo(network) {
+            const pageUrl = encodeURIComponent(window.location.href);
+            const shareText = `${'مبادرة فزعة المحتاج الخيرية'}\nمعاً نصنع أثراً ومعاً نمد يد العون #يلا_نسندهم #فزعة_المحتاج`;
+
+            let url;
+            if (network === 'whatsapp') {
+                url = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            } else if (network === 'facebook') {
+                url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${encodeURIComponent(shareText)}`;
+            }
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer,width=600,height=600');
+            }
+        }
+
         // 4. Gallery Filtering Functionality
         function filterGallery(category, btn) {
             const buttons = document.querySelectorAll('.gallery-filter-btn');
@@ -1008,23 +1089,61 @@
         }
 
         // 5. Lightbox Modal Functionality for Photos
-        function openLightbox(imgSrc, caption) {
-            const modal = document.getElementById('lightbox-modal');
+        let lightboxIndex = 0;
+        let lightboxPhotos = [];
+
+        function buildLightboxPhotos() {
+            lightboxPhotos = Array.from(document.querySelectorAll('.gallery-item.photo')).map(item => {
+                const img = item.querySelector('img');
+                const captionEl = item.querySelector('.text-white p.font-bold');
+                return {
+                    src: img ? img.getAttribute('src') : '',
+                    caption: captionEl ? captionEl.textContent.trim() : ''
+                };
+            });
+        }
+
+        function renderLightbox() {
             const img = document.getElementById('lightbox-img');
             const captionEl = document.getElementById('lightbox-caption');
+            const downloadBtn = document.getElementById('lightbox-download');
+            const photo = lightboxPhotos[lightboxIndex];
+            if (!photo) return;
+
+            if (img) img.src = photo.src;
+            if (captionEl) captionEl.textContent = photo.caption || 'مبادرة فزعة المحتاج الخيرية';
+            if (downloadBtn) downloadBtn.href = photo.src;
+        }
+
+        function openLightbox(imgSrc, caption) {
+            const modal = document.getElementById('lightbox-modal');
             const container = document.getElementById('lightbox-container');
 
-            if (modal && img) {
-                img.src = imgSrc;
-                if (captionEl) captionEl.textContent = caption || 'مبادرة فزعة المحتاج الخيرية';
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-                modal.classList.add('opacity-100');
-                if (container) {
-                    container.classList.remove('scale-95');
-                    container.classList.add('scale-100');
-                }
-                document.body.style.overflow = 'hidden';
+            if (!modal) return;
+            buildLightboxPhotos();
+
+            // Find the index of the clicked image
+            lightboxIndex = lightboxPhotos.findIndex(p => p.src === imgSrc);
+            if (lightboxIndex === -1) {
+                lightboxPhotos.unshift({ src: imgSrc, caption: caption || '' });
+                lightboxIndex = 0;
             }
+
+            renderLightbox();
+
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            if (container) {
+                container.classList.remove('scale-95');
+                container.classList.add('scale-100');
+            }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function navigateLightbox(dir) {
+            if (!lightboxPhotos.length) return;
+            lightboxIndex = (lightboxIndex + dir + lightboxPhotos.length) % lightboxPhotos.length;
+            renderLightbox();
         }
 
         function closeLightbox() {
@@ -1041,9 +1160,15 @@
             }
         }
 
-        // Close Lightbox with Escape key
+        // Close Lightbox with Escape key and navigate with arrow keys
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
+            const modal = document.getElementById('lightbox-modal');
+            const isOpen = modal && !modal.classList.contains('opacity-0');
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (isOpen && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+                navigateLightbox(e.key === 'ArrowRight' ? 1 : -1);
+            }
         });
     </script>
 
