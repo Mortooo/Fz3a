@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | لوحة التحكم — فزعة المحتاج</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-emerald-950 via-slate-900 to-slate-950 flex items-center justify-center p-4 antialiased">
+    <div class="w-full max-w-md">
+        <div class="text-center mb-8">
+            <img src="/logo.jpg" alt="شعار فزعة المحتاج" class="w-20 h-20 rounded-full object-cover border-2 border-emerald-500/50 shadow-lg shadow-emerald-900/40 mx-auto mb-4">
+            <h1 class="text-2xl font-black text-white">لوحة تحكم فزعة المحتاج</h1>
+            <p class="text-emerald-400 mt-1 text-sm font-bold">سجّل الدخول للمتابعة</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-2xl shadow-black/40 p-7">
+            <form method="post" action="{% url 'dashboard_login' %}">
+                {% csrf_token %}
+                {% if error %}
+                <div class="mb-5 bg-rose-50 border border-rose-200 text-rose-700 px-4 py-3 rounded-xl text-sm font-bold flex items-start gap-2">
+                    <i class="fa-solid fa-circle-exclamation mt-0.5"></i>
+                    <span>{{ error }}</span>
+                </div>
+                {% endif %}
+
+                <label class="block text-xs font-bold text-slate-600 mb-1">اسم المستخدم</label>
+                <div class="relative mb-4">
+                    <i class="fa-solid fa-user absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" name="username" required autofocus placeholder="اسم المستخدم"
+                        class="w-full pr-11 pl-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 bg-slate-50 focus:bg-white transition-colors">
+                </div>
+
+                <label class="block text-xs font-bold text-slate-600 mb-1">كلمة المرور</label>
+                <div class="relative mb-5">
+                    <i class="fa-solid fa-lock absolute right-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="password" name="password" required placeholder="••••••••"
+                        class="w-full pr-11 pl-4 py-2.5 text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 bg-slate-50 focus:bg-white transition-colors">
+                </div>
+
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <button type="submit"
+                    class="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold shadow-md shadow-emerald-600/25 transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-right-to-bracket"></i> تسجيل الدخول
+                </button>
+            </form>
+        </div>
+
+        <div class="text-center mt-6">
+            <a href="/" class="text-slate-400 hover:text-emerald-400 text-sm font-bold transition-colors">
+                <i class="fa-solid fa-arrow-right"></i> العودة إلى الموقع
+            </a>
+        </div>
+    </div>
+</body>
+</html>

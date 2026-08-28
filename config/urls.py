@@ -17,6 +17,7 @@ urlpatterns = [
     path('volunteer/', views.volunteer_signup, name='volunteer_signup'),
     # Staff dashboard
     path('dashboard/', dashboard_views.dashboard_redirect, name='dashboard'),
+    path('dashboard/login/', dashboard_views.dashboard_login, name='dashboard_login'),
     path('dashboard/settings/', dashboard_views.dashboard_settings, name='dashboard_settings'),
     path('dashboard/volunteers/', dashboard_views.dashboard_volunteers, name='dashboard_volunteers'),
     path('dashboard/volunteers/<int:pk>/status/', dashboard_views.dashboard_volunteer_status, name='dashboard_volunteer_status'),

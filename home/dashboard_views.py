@@ -1,5 +1,6 @@
-from django.contrib.admin.views.decorators import staff_member_required
+﻿from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -25,11 +26,11 @@ from .models import (
 )
 
 SECTION_TABS = [
-    ('values', 'قيم المبادرة', 'fa-solid fa-heart'),
-    ('fields', 'مجالات العمل', 'fa-solid fa-hand-holding-heart'),
-    ('projects', 'مشاريعنا', 'fa-solid fa-moon'),
-    ('gallery', 'معرض الأثر', 'fa-solid fa-images'),
-    ('donations', 'طرق المساهمة', 'fa-solid fa-coins'),
+    ('values', 'ظ‚ظٹظ… ط§ظ„ظ…ط¨ط§ط¯ط±ط©', 'fa-solid fa-heart'),
+    ('fields', 'ظ…ط¬ط§ظ„ط§طھ ط§ظ„ط¹ظ…ظ„', 'fa-solid fa-hand-holding-heart'),
+    ('projects', 'ظ…ط´ط§ط±ظٹط¹ظ†ط§', 'fa-solid fa-moon'),
+    ('gallery', 'ظ…ط¹ط±ط¶ ط§ظ„ط£ط«ط±', 'fa-solid fa-images'),
+    ('donations', 'ط·ط±ظ‚ ط§ظ„ظ…ط³ط§ظ‡ظ…ط©', 'fa-solid fa-coins'),
 ]
 
 
@@ -43,7 +44,30 @@ def _base_context(request, active):
     }
 
 
-@staff_member_required(login_url='admin:login')
+# ---------------------------------------------------------------------------
+# Login (styled dashboard login form)
+# ---------------------------------------------------------------------------
+
+def dashboard_login(request):
+    if request.user.is_staff:
+        return redirect(request.GET.get('next') or '/dashboard/')
+    error = ''
+    if request.method == 'POST':
+        username = request.POST.get('username', '').strip()
+        password = request.POST.get('password', '')
+        user = authenticate(request, username=username, password=password)
+        if user is not None and user.is_staff and user.is_active:
+            login(request, user)
+            return redirect(request.POST.get('next') or '/dashboard/')
+        error = 'ط¨ظٹط§ظ†ط§طھ ط§ظ„ط¯ط®ظˆظ„ ط؛ظٹط± طµط­ظٹط­ط©طŒ ط£ظˆ ط§ظ„ط­ط³ط§ط¨ ط؛ظٹط± ظ…ط®ظˆظ‘ظ„ ظ„ظ„ظˆط­ط© ط§ظ„طھط­ظƒظ….'
+    context = {
+        'error': error,
+        'next': request.GET.get('next') or request.POST.get('next') or '/dashboard/',
+    }
+    return render(request, 'home/dashboard/login.html', context)
+
+
+@staff_member_required(login_url='dashboard_login')
 def dashboard_redirect(request):
     return redirect('dashboard_settings')
 
@@ -52,14 +76,14 @@ def dashboard_redirect(request):
 # Site Settings
 # ---------------------------------------------------------------------------
 
-@staff_member_required(login_url='admin:login')
+@staff_member_required(login_url='dashboard_login')
 def dashboard_settings(request):
     settings = SiteSettings.objects.first()
     if request.method == 'POST':
         form = SiteSettingsForm(request.POST, instance=settings)
         if form.is_valid():
             form.save()
-            messages.success(request, 'تم حفظ إعدادات الموقع بنجاح.')
+            messages.success(request, 'طھظ… ط­ظپط¸ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ظˆظ‚ط¹ ط¨ظ†ط¬ط§ط­.')
             return redirect('dashboard_settings')
     else:
         form = SiteSettingsForm(instance=settings)
@@ -78,35 +102,35 @@ def _model_tabs():
         'values': {
             'model': CoreValue,
             'form': CoreValueForm,
-            'verbose': 'قيمة',
+            'verbose': 'ظ‚ظٹظ…ط©',
             'urlslug': 'values',
             'tabs_key': 'values',
         },
         'fields': {
             'model': FieldOfWork,
             'form': FieldOfWorkForm,
-            'verbose': 'مجال عمل',
+            'verbose': 'ظ…ط¬ط§ظ„ ط¹ظ…ظ„',
             'urlslug': 'fields',
             'tabs_key': 'fields',
         },
         'projects': {
             'model': Project,
             'form': ProjectForm,
-            'verbose': 'مشروع',
+            'verbose': 'ظ…ط´ط±ظˆط¹',
             'urlslug': 'projects',
             'tabs_key': 'projects',
         },
         'gallery': {
             'model': GalleryItem,
             'form': GalleryItemForm,
-            'verbose': 'عنصر معرض',
+            'verbose': 'ط¹ظ†طµط± ظ…ط¹ط±ط¶',
             'urlslug': 'gallery',
             'tabs_key': 'gallery',
         },
         'donations': {
             'model': DonationMethod,
             'form': DonationMethodForm,
-            'verbose': 'طريقة مساهمة',
+            'verbose': 'ط·ط±ظٹظ‚ط© ظ…ط³ط§ظ‡ظ…ط©',
             'urlslug': 'donations',
             'tabs_key': 'donations',
         },
@@ -118,21 +142,21 @@ def _row_for(section_slug, obj):
     slug = section_slug
     if slug == 'values':
         return {
-            'العنوان': obj.title,
-            'الأيقونة': f"<i class='{obj.icon}'></i>",
-            'الترتيب': obj.order,
+            'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title,
+            'ط§ظ„ط£ظٹظ‚ظˆظ†ط©': f"<i class='{obj.icon}'></i>",
+            'ط§ظ„طھط±طھظٹط¨': obj.order,
         }
     if slug == 'fields':
-        return {'العنوان': obj.title, 'اللون': obj.color, 'الترتيب': obj.order}
+        return {'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title, 'ط§ظ„ظ„ظˆظ†': obj.color, 'ط§ظ„طھط±طھظٹط¨': obj.order}
     if slug == 'projects':
-        return {'العنوان': obj.title, 'الشارة': obj.badge, 'الترتيب': obj.order}
+        return {'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title, 'ط§ظ„ط´ط§ط±ط©': obj.badge, 'ط§ظ„طھط±طھظٹط¨': obj.order}
     if slug == 'gallery':
-        kind = 'صورة' if obj.media_type == 'photo' else 'فيديو'
-        return {'العنوان': obj.title, 'النوع': kind, 'الترتيب': obj.order, 'ظاهر': 'نعم' if obj.active else 'لا'}
+        kind = 'طµظˆط±ط©' if obj.media_type == 'photo' else 'ظپظٹط¯ظٹظˆ'
+        return {'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title, 'ط§ظ„ظ†ظˆط¹': kind, 'ط§ظ„طھط±طھظٹط¨': obj.order, 'ط¸ط§ظ‡ط±': 'ظ†ط¹ظ…' if obj.active else 'ظ„ط§'}
     if slug == 'donations':
-        cat = 'حسابات مصرفية' if obj.category == 'bank' else 'عبر الرصيد'
-        return {'الاسم': obj.name, 'الرقم': obj.number, 'الفئة': cat, 'الترتيب': obj.order}
-    return {'العنوان': str(obj)}
+        cat = 'ط­ط³ط§ط¨ط§طھ ظ…طµط±ظپظٹط©' if obj.category == 'bank' else 'ط¹ط¨ط± ط§ظ„ط±طµظٹط¯'
+        return {'ط§ظ„ط§ط³ظ…': obj.name, 'ط§ظ„ط±ظ‚ظ…': obj.number, 'ط§ظ„ظپط¦ط©': cat, 'ط§ظ„طھط±طھظٹط¨': obj.order}
+    return {'ط§ظ„ط¹ظ†ظˆط§ظ†': str(obj)}
 
 
 # Cache of (info, list_view, edit_view, delete_view) per slug.
@@ -145,7 +169,7 @@ def _get_section(slug):
         model = info['model']
         form_cls = info['form']
 
-        @staff_member_required(login_url='admin:login')
+        @staff_member_required(login_url='dashboard_login')
         def section_list(request, slug=slug, model=model, form_cls=form_cls, info=info):
             context = _base_context(request, slug)
             context['section'] = info
@@ -153,7 +177,7 @@ def _get_section(slug):
                 form = form_cls(request.POST, request.FILES)
                 if form.is_valid():
                     form.save()
-                    messages.success(request, f'تمت إضافة {info["verbose"]} بنجاح.')
+                    messages.success(request, f'طھظ…طھ ط¥ط¶ط§ظپط© {info["verbose"]} ط¨ظ†ط¬ط§ط­.')
                     return redirect('dashboard_section_list', slug)
             else:
                 form = form_cls()
@@ -164,14 +188,14 @@ def _get_section(slug):
             context['rows'] = [(o.pk, _row_for(slug, o)) for o in objects]
             return render(request, 'home/dashboard/section_list.html', context)
 
-        @staff_member_required(login_url='admin:login')
+        @staff_member_required(login_url='dashboard_login')
         def section_edit(request, pk, slug=slug, model=model, form_cls=form_cls, info=info):
             obj = get_object_or_404(model, pk=pk)
             if request.method == 'POST':
                 form = form_cls(request.POST, request.FILES, instance=obj)
                 if form.is_valid():
                     form.save()
-                    messages.success(request, 'تم حفظ التعديلات بنجاح.')
+                    messages.success(request, 'طھظ… ط­ظپط¸ ط§ظ„طھط¹ط¯ظٹظ„ط§طھ ط¨ظ†ط¬ط§ط­.')
                     return redirect('dashboard_section_list', slug)
             else:
                 form = form_cls(instance=obj)
@@ -181,12 +205,12 @@ def _get_section(slug):
             context['object'] = obj
             return render(request, 'home/dashboard/section_edit.html', context)
 
-        @staff_member_required(login_url='admin:login')
+        @staff_member_required(login_url='dashboard_login')
         @require_POST
         def section_delete(request, pk, slug=slug, model=model, info=info):
             obj = get_object_or_404(model, pk=pk)
             obj.delete()
-            messages.success(request, 'تم الحذف بنجاح.')
+            messages.success(request, 'طھظ… ط§ظ„ط­ط°ظپ ط¨ظ†ط¬ط§ط­.')
             return redirect('dashboard_section_list', slug)
 
         _section_cache[slug] = (info, section_list, section_edit, section_delete)
@@ -215,7 +239,7 @@ def dashboard_section_delete(request, slug, pk):
 # Volunteers
 # ---------------------------------------------------------------------------
 
-@staff_member_required(login_url='admin:login')
+@staff_member_required(login_url='dashboard_login')
 def dashboard_volunteers(request):
     context = _base_context(request, 'volunteers')
     applications = VolunteerApplication.objects.all()
@@ -238,23 +262,23 @@ def dashboard_volunteers(request):
     return render(request, 'home/dashboard/volunteers.html', context)
 
 
-@staff_member_required(login_url='admin:login')
+@staff_member_required(login_url='dashboard_login')
 @require_POST
 def dashboard_volunteer_status(request, pk):
     obj = get_object_or_404(VolunteerApplication, pk=pk)
     new_status = request.POST.get('status', '')
     valid = dict(VolunteerApplication.Status.choices)
     if new_status not in valid:
-        return JsonResponse({'ok': False, 'error': 'حالة غير صالحة'}, status=400)
+        return JsonResponse({'ok': False, 'error': 'ط­ط§ظ„ط© ط؛ظٹط± طµط§ظ„ط­ط©'}, status=400)
     obj.status = new_status
     obj.save(update_fields=['status'])
     return JsonResponse({'ok': True, 'status': obj.get_status_display()})
 
 
-@staff_member_required(login_url='admin:login')
+@staff_member_required(login_url='dashboard_login')
 @require_POST
 def dashboard_volunteer_delete(request, pk):
     obj = get_object_or_404(VolunteerApplication, pk=pk)
     obj.delete()
-    messages.success(request, 'تم حذف الطلب.')
+    messages.success(request, 'طھظ… ط­ط°ظپ ط§ظ„ط·ظ„ط¨.')
     return redirect('dashboard_volunteers')
