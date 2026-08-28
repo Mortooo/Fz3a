@@ -1,4 +1,4 @@
-﻿from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.db.models import Count, Q
@@ -26,11 +26,11 @@ from .models import (
 )
 
 SECTION_TABS = [
-    ('values', 'ظ‚ظٹظ… ط§ظ„ظ…ط¨ط§ط¯ط±ط©', 'fa-solid fa-heart'),
-    ('fields', 'ظ…ط¬ط§ظ„ط§طھ ط§ظ„ط¹ظ…ظ„', 'fa-solid fa-hand-holding-heart'),
-    ('projects', 'ظ…ط´ط§ط±ظٹط¹ظ†ط§', 'fa-solid fa-moon'),
-    ('gallery', 'ظ…ط¹ط±ط¶ ط§ظ„ط£ط«ط±', 'fa-solid fa-images'),
-    ('donations', 'ط·ط±ظ‚ ط§ظ„ظ…ط³ط§ظ‡ظ…ط©', 'fa-solid fa-coins'),
+    ('values', 'قيم المبادرة', 'fa-solid fa-heart'),
+    ('fields', 'مجالات العمل', 'fa-solid fa-hand-holding-heart'),
+    ('projects', 'مشاريعنا', 'fa-solid fa-moon'),
+    ('gallery', 'معرض الأثر', 'fa-solid fa-images'),
+    ('donations', 'طرق المساهمة', 'fa-solid fa-coins'),
 ]
 
 
@@ -59,7 +59,7 @@ def dashboard_login(request):
         if user is not None and user.is_staff and user.is_active:
             login(request, user)
             return redirect(request.POST.get('next') or '/dashboard/')
-        error = 'ط¨ظٹط§ظ†ط§طھ ط§ظ„ط¯ط®ظˆظ„ ط؛ظٹط± طµط­ظٹط­ط©طŒ ط£ظˆ ط§ظ„ط­ط³ط§ط¨ ط؛ظٹط± ظ…ط®ظˆظ‘ظ„ ظ„ظ„ظˆط­ط© ط§ظ„طھط­ظƒظ….'
+        error = 'بيانات الدخول غير صحيحة، أو الحساب غير مخوّل للوحة التحكم.'
     context = {
         'error': error,
         'next': request.GET.get('next') or request.POST.get('next') or '/dashboard/',
@@ -83,7 +83,7 @@ def dashboard_settings(request):
         form = SiteSettingsForm(request.POST, instance=settings)
         if form.is_valid():
             form.save()
-            messages.success(request, 'طھظ… ط­ظپط¸ ط¥ط¹ط¯ط§ط¯ط§طھ ط§ظ„ظ…ظˆظ‚ط¹ ط¨ظ†ط¬ط§ط­.')
+            messages.success(request, 'تم حفظ إعدادات الموقع بنجاح.')
             return redirect('dashboard_settings')
     else:
         form = SiteSettingsForm(instance=settings)
@@ -102,35 +102,35 @@ def _model_tabs():
         'values': {
             'model': CoreValue,
             'form': CoreValueForm,
-            'verbose': 'ظ‚ظٹظ…ط©',
+            'verbose': 'قيمة',
             'urlslug': 'values',
             'tabs_key': 'values',
         },
         'fields': {
             'model': FieldOfWork,
             'form': FieldOfWorkForm,
-            'verbose': 'ظ…ط¬ط§ظ„ ط¹ظ…ظ„',
+            'verbose': 'مجال عمل',
             'urlslug': 'fields',
             'tabs_key': 'fields',
         },
         'projects': {
             'model': Project,
             'form': ProjectForm,
-            'verbose': 'ظ…ط´ط±ظˆط¹',
+            'verbose': 'مشروع',
             'urlslug': 'projects',
             'tabs_key': 'projects',
         },
         'gallery': {
             'model': GalleryItem,
             'form': GalleryItemForm,
-            'verbose': 'ط¹ظ†طµط± ظ…ط¹ط±ط¶',
+            'verbose': 'عنصر معرض',
             'urlslug': 'gallery',
             'tabs_key': 'gallery',
         },
         'donations': {
             'model': DonationMethod,
             'form': DonationMethodForm,
-            'verbose': 'ط·ط±ظٹظ‚ط© ظ…ط³ط§ظ‡ظ…ط©',
+            'verbose': 'طريقة مساهمة',
             'urlslug': 'donations',
             'tabs_key': 'donations',
         },
@@ -142,21 +142,21 @@ def _row_for(section_slug, obj):
     slug = section_slug
     if slug == 'values':
         return {
-            'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title,
-            'ط§ظ„ط£ظٹظ‚ظˆظ†ط©': f"<i class='{obj.icon}'></i>",
-            'ط§ظ„طھط±طھظٹط¨': obj.order,
+            'العنوان': obj.title,
+            'الأيقونة': f"<i class='{obj.icon}'></i>",
+            'الترتيب': obj.order,
         }
     if slug == 'fields':
-        return {'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title, 'ط§ظ„ظ„ظˆظ†': obj.color, 'ط§ظ„طھط±طھظٹط¨': obj.order}
+        return {'العنوان': obj.title, 'اللون': obj.color, 'الترتيب': obj.order}
     if slug == 'projects':
-        return {'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title, 'ط§ظ„ط´ط§ط±ط©': obj.badge, 'ط§ظ„طھط±طھظٹط¨': obj.order}
+        return {'العنوان': obj.title, 'الشارة': obj.badge, 'الترتيب': obj.order}
     if slug == 'gallery':
-        kind = 'طµظˆط±ط©' if obj.media_type == 'photo' else 'ظپظٹط¯ظٹظˆ'
-        return {'ط§ظ„ط¹ظ†ظˆط§ظ†': obj.title, 'ط§ظ„ظ†ظˆط¹': kind, 'ط§ظ„طھط±طھظٹط¨': obj.order, 'ط¸ط§ظ‡ط±': 'ظ†ط¹ظ…' if obj.active else 'ظ„ط§'}
+        kind = 'صورة' if obj.media_type == 'photo' else 'فيديو'
+        return {'العنوان': obj.title, 'النوع': kind, 'الترتيب': obj.order, 'ظاهر': 'نعم' if obj.active else 'لا'}
     if slug == 'donations':
-        cat = 'ط­ط³ط§ط¨ط§طھ ظ…طµط±ظپظٹط©' if obj.category == 'bank' else 'ط¹ط¨ط± ط§ظ„ط±طµظٹط¯'
-        return {'ط§ظ„ط§ط³ظ…': obj.name, 'ط§ظ„ط±ظ‚ظ…': obj.number, 'ط§ظ„ظپط¦ط©': cat, 'ط§ظ„طھط±طھظٹط¨': obj.order}
-    return {'ط§ظ„ط¹ظ†ظˆط§ظ†': str(obj)}
+        cat = 'حسابات مصرفية' if obj.category == 'bank' else 'عبر الرصيد'
+        return {'الاسم': obj.name, 'الرقم': obj.number, 'الفئة': cat, 'الترتيب': obj.order}
+    return {'العنوان': str(obj)}
 
 
 # Cache of (info, list_view, edit_view, delete_view) per slug.
@@ -177,7 +177,7 @@ def _get_section(slug):
                 form = form_cls(request.POST, request.FILES)
                 if form.is_valid():
                     form.save()
-                    messages.success(request, f'طھظ…طھ ط¥ط¶ط§ظپط© {info["verbose"]} ط¨ظ†ط¬ط§ط­.')
+                    messages.success(request, f'تمت إضافة {info["verbose"]} بنجاح.')
                     return redirect('dashboard_section_list', slug)
             else:
                 form = form_cls()
@@ -195,7 +195,7 @@ def _get_section(slug):
                 form = form_cls(request.POST, request.FILES, instance=obj)
                 if form.is_valid():
                     form.save()
-                    messages.success(request, 'طھظ… ط­ظپط¸ ط§ظ„طھط¹ط¯ظٹظ„ط§طھ ط¨ظ†ط¬ط§ط­.')
+                    messages.success(request, 'تم حفظ التعديلات بنجاح.')
                     return redirect('dashboard_section_list', slug)
             else:
                 form = form_cls(instance=obj)
@@ -210,7 +210,7 @@ def _get_section(slug):
         def section_delete(request, pk, slug=slug, model=model, info=info):
             obj = get_object_or_404(model, pk=pk)
             obj.delete()
-            messages.success(request, 'طھظ… ط§ظ„ط­ط°ظپ ط¨ظ†ط¬ط§ط­.')
+            messages.success(request, 'تم الحذف بنجاح.')
             return redirect('dashboard_section_list', slug)
 
         _section_cache[slug] = (info, section_list, section_edit, section_delete)
@@ -269,7 +269,7 @@ def dashboard_volunteer_status(request, pk):
     new_status = request.POST.get('status', '')
     valid = dict(VolunteerApplication.Status.choices)
     if new_status not in valid:
-        return JsonResponse({'ok': False, 'error': 'ط­ط§ظ„ط© ط؛ظٹط± طµط§ظ„ط­ط©'}, status=400)
+        return JsonResponse({'ok': False, 'error': 'حالة غير صالحة'}, status=400)
     obj.status = new_status
     obj.save(update_fields=['status'])
     return JsonResponse({'ok': True, 'status': obj.get_status_display()})
@@ -280,5 +280,5 @@ def dashboard_volunteer_status(request, pk):
 def dashboard_volunteer_delete(request, pk):
     obj = get_object_or_404(VolunteerApplication, pk=pk)
     obj.delete()
-    messages.success(request, 'طھظ… ط­ط°ظپ ط§ظ„ط·ظ„ط¨.')
+    messages.success(request, 'تم حذف الطلب.')
     return redirect('dashboard_volunteers')

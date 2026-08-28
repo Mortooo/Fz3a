@@ -1,0 +1,5 @@
+anon redirect: 302 /dashboard/login/?next=/dashboard/settings/
+login page has form title 'تسجيل الدخول': True
+error message present 'بيانات الدخول غير صحيحة': True
+error part2 'غير مخوّل للوحة التحكم': True
+valid login redirect: 302 /dashboard/
