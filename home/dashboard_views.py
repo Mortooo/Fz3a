@@ -1,6 +1,6 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
-from django.db.models import Count
+from django.db.models import Count, Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -222,9 +222,19 @@ def dashboard_volunteers(request):
     status_q = request.GET.get('status', '')
     if status_q in dict(VolunteerApplication.Status.choices):
         applications = applications.filter(status=status_q)
+    search_q = request.GET.get('q', '').strip()
+    if search_q:
+        applications = applications.filter(
+            Q(full_name__icontains=search_q)
+            | Q(phone__icontains=search_q)
+            | Q(email__icontains=search_q)
+            | Q(city__icontains=search_q)
+            | Q(interest__icontains=search_q)
+        )
     context['applicants'] = applications
     context['status_choices'] = VolunteerApplication.Status.choices
     context['current_status_filter'] = status_q
+    context['search_q'] = search_q
     return render(request, 'home/dashboard/volunteers.html', context)
 
 
