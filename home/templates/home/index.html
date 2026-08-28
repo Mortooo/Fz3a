@@ -195,13 +195,11 @@
 
                 <!-- CTA Button -->
                 <div class="flex items-center gap-2 sm:gap-3">
-                    {% if request.user.is_staff %}
                     <a href="{% url 'dashboard' %}"
                         title="لوحة التحكم"
                         class="bg-slate-100 hover:bg-emerald-50 text-slate-700 border border-slate-200 hover:border-emerald-400 w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center flex-shrink-0">
                         <i class="fa-solid fa-gauge-high text-emerald-600 text-sm sm:text-base"></i>
                     </a>
-                    {% endif %}
                     <button type="button" onclick="openVolunteerModal()"
                         title="انضم كمتطوع"
                         class="bg-slate-100 hover:bg-emerald-50 text-slate-700 border border-slate-200 hover:border-emerald-400 w-9 h-9 sm:w-10 sm:h-10 rounded-xl font-bold text-sm transition-all hover:-translate-y-0.5 active:scale-95 flex items-center justify-center cursor-pointer flex-shrink-0">
