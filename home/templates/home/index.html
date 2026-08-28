@@ -4,34 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبادرة فزعة المحتاج الخيرية | #يلا_نسندهم</title>
-    <meta name="description" content="مبادرة فزعة المحتاج الخيرية - مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة في المجالات العلاجية والتعليمية وسداد الديون والمشاريع الموسمية. #يلا_نسندهم">
+    <title>{{ settings.site_name }} | {{ settings.hashtag }}</title>
+    <meta name="description" content="{{ settings.tagline }}">
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="مبادرة فزعة المحتاج الخيرية">
-    <meta property="og:title" content="مبادرة فزعة المحتاج الخيرية | #يلا_نسندهم">
-    <meta property="og:description" content="مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة. معاً نصنع أثراً… ومعاً نمد يد العون. #يلا_نسندهم">
-    <meta property="og:image" content="logo.jpg">
+    <meta property="og:site_name" content="{{ settings.site_name }}">
+    <meta property="og:title" content="{{ settings.site_name }} | {{ settings.hashtag }}">
+    <meta property="og:description" content="{{ settings.tagline }}">
+    {% if settings.logo %}<meta property="og:image" content="{{ settings.logo.url }}">{% else %}<meta property="og:image" content="logo.jpg">{% endif %}
     <meta property="og:url" content="https://Mortooo.github.io/Fz3a/">
     <meta property="og:locale" content="ar_AR">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="مبادرة فزعة المحتاج الخيرية | #يلا_نسندهم">
-    <meta name="twitter:description" content="مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة. معاً نصنع أثراً… ومعاً نمد يد العون.">
-    <meta name="twitter:image" content="logo.jpg">
+    <meta name="twitter:title" content="{{ settings.site_name }} | {{ settings.hashtag }}">
+    <meta name="twitter:description" content="{{ settings.tagline }}">
+    {% if settings.logo %}<meta name="twitter:image" content="{{ settings.logo.url }}">{% else %}<meta name="twitter:image" content="logo.jpg">{% endif %}
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "NGO",
-        "name": "مبادرة فزعة المحتاج الخيرية",
+        "name": "{{ settings.site_name }}",
         "alternateName": "Fz3a",
-        "description": "مبادرة تطوعية إنسانية لمساندة المحتاجين والأسر المحتاجة في المجالات العلاجية والتعليمية وسداد الديون والمشاريع الموسمية.",
+        "description": "{{ settings.tagline }}",
         "url": "https://Mortooo.github.io/Fz3a/",
         "logo": "logo.jpg",
         "sameAs": [
-            "https://chat.whatsapp.com/JxMWrPjswZoGB5IoP1OgFv?s=cl&p=a&ilr=0",
-            "https://facebook.com/groups/971459819951254/"
+            "{{ settings.whatsapp_link }}",
+            "{{ settings.facebook_link }}"
         ]
     }
     </script>
@@ -176,11 +176,11 @@
             <div class="flex justify-between items-center h-16 sm:h-20">
                 <!-- Brand / Logo -->
                 <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
-                    <img src="logo.jpg" alt="شعار فزعة المحتاج" 
+                    <img src="{% if settings.logo %}{{ settings.logo.url }}{% else %}logo.jpg{% endif %}" alt="شعار فزعة المحتاج" 
                         class="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover shadow-sm border border-amber-500/30 group-hover:scale-105 group-hover:rotate-2 transition-all duration-300 flex-shrink-0">
                     <div class="leading-tight">
                         <span class="text-base sm:text-xl font-black text-slate-900 block group-hover:text-emerald-700 transition-colors">فزعة المحتاج</span>
-                        <span class="text-[10px] sm:text-xs font-semibold text-emerald-600 tracking-wide block">مبادرة خيرية تطوعية</span>
+                        <span class="text-[10px] sm:text-xs font-semibold text-emerald-600 tracking-wide block">{{ settings.tagline }}</span>
                     </div>
                 </a>
 
@@ -216,23 +216,22 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                 <!-- Hero Logo Display with Floating Glow -->
                 <div class="reveal reveal-scale inline-block p-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/25 shadow-2xl hero-logo-animate mb-6">
-                    <img src="logo.jpg" alt="شعار فزعة المحتاج" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover shadow-inner mx-auto">
+                    <img src="{% if settings.logo %}{{ settings.logo.url }}{% else %}logo.jpg{% endif %}" alt="شعار فزعة المحتاج" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover shadow-inner mx-auto">
                 </div>
                 
                 <div class="reveal delay-100">
                     <span
                         class="inline-block bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-1.5 rounded-full text-sm font-bold mb-6 backdrop-blur-sm shadow-sm hover:scale-105 transition-transform cursor-default">
-                        #يلا_نسندهم
+                        {{ settings.hashtag }}
                     </span>
                 </div>
                 
                 <h1 class="reveal delay-200 text-3xl sm:text-5xl lg:text-6xl font-black mb-6 leading-tight tracking-tight">
-                    معاً نصنع أثراً… ومعاً نمد يد العون
+                    {{ settings.hero_headline }}
                 </h1>
                 
                 <p class="reveal delay-300 text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
-                    مبادرة تطوعية إنسانية تهدف إلى مساندة المحتاجين والوقوف إلى جانب الأسر والأفراد الذين يمرون بظروف
-                    صعبة، من خلال تقديم الدعم والمساعدة في مختلف المجالات الإنسانية والمجتمعية.
+                    {{ settings.hero_intro }}
                 </p>
                 
                 <div class="reveal delay-400 flex flex-wrap justify-center gap-3 sm:gap-4">
@@ -242,13 +241,13 @@
                         <span>تبرع الآن</span>
                     </a>
                     
-                    <a href="https://chat.whatsapp.com/JxMWrPjswZoGB5IoP1OgFv?s=cl&p=a&ilr=0" target="_blank"
+                    <a href="{{ settings.whatsapp_link }}" target="_blank"
                         class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500/50 hover:shadow-lg text-white font-bold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all hover:-translate-y-1 active:scale-95 text-base sm:text-lg flex items-center gap-2.5">
                         <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
                         <span>مجتمع الواتساب</span>
                     </a>
                     
-                    <a href="https://facebook.com/groups/971459819951254/" target="_blank"
+                    <a href="{{ settings.facebook_link }}" target="_blank"
                         class="bg-slate-800/90 hover:bg-slate-800 border border-slate-700 hover:border-blue-500/50 hover:shadow-lg text-white font-bold px-5 sm:px-7 py-3.5 sm:py-4 rounded-xl transition-all hover:-translate-y-1 active:scale-95 text-base sm:text-lg flex items-center gap-2.5">
                         <i class="fa-brands fa-facebook text-blue-400 text-xl"></i>
                         <span>مجموعة الفيسبوك</span>
@@ -279,23 +278,11 @@
                 <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
                     <div class="reveal">
                         <span
-                            class="text-emerald-600 font-bold text-sm tracking-wider uppercase block mb-2">قصتنا</span>
-                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6 leading-snug">سبع سنوات من العطاء والتكاتف
-                            المجتمعي</h2>
-                        <p class="text-slate-600 leading-relaxed mb-4 text-base sm:text-lg">
-                            منذ انطلاقة مبادرة فزعة المحتاج الخيرية قبل نحو سبع سنوات، بدأت رسالتنا بفكرة بسيطة وعظيمة
-                            في معناها: <strong class="text-slate-900 font-bold">أن لا يواجه المحتاج أزمته وحده.</strong>
-                        </p>
-                        <p class="text-slate-600 leading-relaxed mb-4">
-                            وخلال هذه السنوات، واصلت المبادرة جهودها في مساعدة المحتاجين، وإطلاق المبادرات الإنسانية،
-                            والاستجابة للحالات الطارئة، وجمع أهل الخير حول هدف واحد؛ وهو تخفيف معاناة الإنسان وصناعة أثر
-                            حقيقي في المجتمع.
-                        </p>
-                        <p class="text-slate-600 leading-relaxed">
-                            لم تكن السنوات السبع مجرد فترة زمنية، بل كانت رحلة مليئة بالعطاء، والتحديات، والمواقف
-                            الإنسانية التي أكدت لنا أن الخير ما زال موجوداً، وأن تكاتف المجتمع قادر على تغيير حياة
-                            إنسان.
-                        </p>
+                            class="text-emerald-600 font-bold text-sm tracking-wider uppercase block mb-2">{{ settings.story_badge }}</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6 leading-snug">{{ settings.story_headline }}</h2>
+                        {% for para in settings.get_story_paragraphs %}
+                        <p class="text-slate-600 leading-relaxed mb-4 text-base sm:text-lg">{{ para }}</p>
+                        {% endfor %}
                     </div>
                     
                     <div class="reveal delay-200 bg-gradient-to-br from-emerald-50 via-slate-50 to-slate-100 p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-sm interactive-card hover:border-emerald-300">
@@ -306,12 +293,10 @@
                                     class="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-md shadow-emerald-600/20 icon-hover-animate">
                                     <i class="fa-solid fa-bullseye"></i>
                                 </div>
-                                <h3 class="text-xl font-bold text-slate-900">رسالتنا</h3>
+                                <h3 class="text-xl font-bold text-slate-900">{{ settings.mission_title }}</h3>
                             </div>
                             <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                                نسعى إلى الوصول إلى المحتاجين وتقديم الدعم لهم بكرامة وشفافية، وتشجيع أفراد المجتمع على
-                                المشاركة في العمل الخيري والتطوعي، حتى يصبح العطاء ثقافة مستمرة وأثراً يمتد إلى أكبر عدد
-                                ممكن من المستفيدين.
+                                {{ settings.mission_text }}
                             </p>
                         </div>
                         <div>
@@ -320,11 +305,10 @@
                                     class="w-11 h-11 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-lg shadow-md shadow-emerald-600/20 icon-hover-animate">
                                     <i class="fa-solid fa-eye"></i>
                                 </div>
-                                <h3 class="text-xl font-bold text-slate-900">رؤيتنا</h3>
+                                <h3 class="text-xl font-bold text-slate-900">{{ settings.vision_title }}</h3>
                             </div>
                             <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                                أن نكون جسراً موثوقاً بين أهل الخير والمحتاجين، وأن نساهم في بناء مجتمع أكثر تكافلاً
-                                ورحمة، يشعر فيه كل محتاج أن هناك من يقف إلى جانبه.
+                                {{ settings.vision_text }}
                             </p>
                         </div>
                     </div>
@@ -339,53 +323,16 @@
                     </div>
                     
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Value 1 -->
+                        {% for value in values %}
                         <div
                             class="reveal delay-100 interactive-card p-7 rounded-2xl border border-slate-100 bg-slate-50/80 hover:bg-white hover:border-emerald-300 hover:shadow-lg">
-                            <i class="fa-solid fa-heart-pulse text-3xl text-emerald-600 mb-4 inline-block icon-hover-animate"></i>
-                            <h4 class="font-bold text-lg text-slate-900 mb-2">الرحمة</h4>
-                            <p class="text-slate-600 text-sm leading-relaxed">نضع الإنسان واحتياجه في مقدمة أولوياتنا دون تمييز.</p>
+                            <i class="{{ value.icon }} text-3xl text-emerald-600 mb-4 inline-block icon-hover-animate"></i>
+                            <h4 class="font-bold text-lg text-slate-900 mb-2">{{ value.title }}</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">{{ value.description }}</p>
                         </div>
-                        
-                        <!-- Value 2 -->
-                        <div
-                            class="reveal delay-200 interactive-card p-7 rounded-2xl border border-slate-100 bg-slate-50/80 hover:bg-white hover:border-emerald-300 hover:shadow-lg">
-                            <i class="fa-solid fa-shield-halved text-3xl text-emerald-600 mb-4 inline-block icon-hover-animate"></i>
-                            <h4 class="font-bold text-lg text-slate-900 mb-2">الأمانة</h4>
-                            <p class="text-slate-600 text-sm leading-relaxed">نحافظ على ثقة المتبرعين والمستفيدين بكل إخلاص.</p>
-                        </div>
-                        
-                        <!-- Value 3 -->
-                        <div
-                            class="reveal delay-300 interactive-card p-7 rounded-2xl border border-slate-100 bg-slate-50/80 hover:bg-white hover:border-emerald-300 hover:shadow-lg">
-                            <i class="fa-solid fa-glasses text-3xl text-emerald-600 mb-4 inline-block icon-hover-animate"></i>
-                            <h4 class="font-bold text-lg text-slate-900 mb-2">الشفافية</h4>
-                            <p class="text-slate-600 text-sm leading-relaxed">نحرص على الوضوح التام في كافة أعمالنا ومشاريعنا.</p>
-                        </div>
-                        
-                        <!-- Value 4 -->
-                        <div
-                            class="reveal delay-400 interactive-card p-7 rounded-2xl border border-slate-100 bg-slate-50/80 hover:bg-white hover:border-emerald-300 hover:shadow-lg">
-                            <i class="fa-solid fa-people-hold text-3xl text-emerald-600 mb-4 inline-block icon-hover-animate"></i>
-                            <h4 class="font-bold text-lg text-slate-900 mb-2">التكافل</h4>
-                            <p class="text-slate-600 text-sm leading-relaxed">نؤمن أن العمل الخيري مسؤولية مشتركة لجميع أفراد المجتمع.</p>
-                        </div>
-                        
-                        <!-- Value 5 -->
-                        <div
-                            class="reveal delay-500 interactive-card p-7 rounded-2xl border border-slate-100 bg-slate-50/80 hover:bg-white hover:border-emerald-300 hover:shadow-lg">
-                            <i class="fa-solid fa-user-shield text-3xl text-emerald-600 mb-4 inline-block icon-hover-animate"></i>
-                            <h4 class="font-bold text-lg text-slate-900 mb-2">الكرامة</h4>
-                            <p class="text-slate-600 text-sm leading-relaxed">نقدم المساعدة بما يحفظ كرامة وخصوصية المستفيد تماماً.</p>
-                        </div>
-                        
-                        <!-- Value 6 -->
-                        <div
-                            class="reveal delay-600 interactive-card p-7 rounded-2xl border border-slate-100 bg-slate-50/80 hover:bg-white hover:border-emerald-300 hover:shadow-lg">
-                            <i class="fa-solid fa-chart-line text-3xl text-emerald-600 mb-4 inline-block icon-hover-animate"></i>
-                            <h4 class="font-bold text-lg text-slate-900 mb-2">الأثر</h4>
-                            <p class="text-slate-600 text-sm leading-relaxed">لا نبحث فقط عن تقديم المساعدة، بل عن صناعة أثر حقيقي ومستمر.</p>
-                        </div>
+                        {% empty %}
+                        <p class="col-span-full text-center text-slate-400">لا توجد قيم مضافة بعد.</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -401,65 +348,27 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Medical -->
+                    {% for field in fields %}
                     <div
-                        class="reveal delay-100 interactive-card bg-white p-8 sm:p-9 rounded-3xl shadow-sm border border-slate-200/70 hover:border-rose-300 hover:shadow-xl flex flex-col justify-between">
+                        class="reveal delay-100 interactive-card bg-white p-8 sm:p-9 rounded-3xl shadow-sm border border-slate-200/70 {{ field.color_classes.border }} hover:shadow-xl flex flex-col justify-between">
                         <div>
                             <div
-                                class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl mb-6 shadow-sm icon-hover-animate">
-                                <i class="fa-solid fa-notes-medical"></i>
+                                class="w-14 h-14 rounded-2xl {{ field.color_classes.icon_bg }} {{ field.color_classes.icon_color }} flex items-center justify-center text-2xl mb-6 shadow-sm icon-hover-animate">
+                                <i class="{{ field.icon }}"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-3">الحوجات العلاجية</h3>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">{{ field.title }}</h3>
                             <p class="text-slate-600 text-sm leading-relaxed">
-                                نساهم في توفير تكاليف العلاج والأدوية والفحوصات للحالات التي تحتاج إلى الدعم، ونسعى لأن
-                                لا يكون العجز المادي سبباً في حرمان أي محتاج من العلاج.
+                                {{ field.description }}
                             </p>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-rose-600">
-                            <span>رعاية صحية وتكفل</span>
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold {{ field.color_classes.footer }}">
+                            <span>{{ field.footer_note }}</span>
                             <i class="fa-solid fa-arrow-left text-[10px]"></i>
                         </div>
                     </div>
-
-                    <!-- Debt Relief -->
-                    <div
-                        class="reveal delay-200 interactive-card bg-white p-8 sm:p-9 rounded-3xl shadow-sm border border-slate-200/70 hover:border-amber-300 hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-6 shadow-sm icon-hover-animate">
-                                <i class="fa-solid fa-handshake-angle"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-3">سداد الديون</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">
-                                نساعد في تفريج كربة الغارمين وأصحاب الديون الذين يمرون بظروف صعبة، من خلال المساهمة في
-                                سداد ما عليهم وفقاً للحالات التي يتم اعتمادها.
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-amber-600">
-                            <span>تفريج كرب الغارمين</span>
-                            <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                        </div>
-                    </div>
-
-                    <!-- Education -->
-                    <div
-                        class="reveal delay-300 interactive-card bg-white p-8 sm:p-9 rounded-3xl shadow-sm border border-slate-200/70 hover:border-blue-300 hover:shadow-xl flex flex-col justify-between">
-                        <div>
-                            <div
-                                class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl mb-6 shadow-sm icon-hover-animate">
-                                <i class="fa-solid fa-graduation-cap"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-3">حوجات الطلبة</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">
-                                ندعم الطلاب والطالبات المحتاجين، ونساهم في توفير احتياجاتهم التعليمية لمساعدتهم على
-                                مواصلة دراستهم وتحقيق أهدافهم.
-                            </p>
-                        </div>
-                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-bold text-blue-600">
-                            <span>دعم المسيرة التعليمية</span>
-                            <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                        </div>
-                    </div>
+                    {% empty %}
+                    <p class="col-span-full text-center text-slate-400">لا توجد مجالات مضافة بعد.</p>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -474,37 +383,23 @@
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Ramadan Basket -->
+                    {% for project in projects %}
                     <div
-                        class="reveal delay-100 interactive-card bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden shadow-lg hover:shadow-2xl border border-emerald-500/20">
+                        class="reveal delay-100 interactive-card bg-gradient-to-br {{ project.gradient }} text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden shadow-lg hover:shadow-2xl border border-emerald-500/20">
                         <div class="absolute top-0 left-0 p-8 opacity-10 text-8xl pointer-events-none">
-                            <i class="fa-solid fa-moon"></i>
+                            <i class="{{ project.icon }}"></i>
                         </div>
                         <span
-                            class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-3.5 py-1.5 rounded-full font-bold mb-5 inline-block">مشروع
-                            موسمي</span>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold mb-3 text-white">سلة رمضان</h3>
+                            class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-3.5 py-1.5 rounded-full font-bold mb-5 inline-block">{{
+                            project.badge }}</span>
+                        <h3 class="text-2xl sm:text-3xl font-extrabold mb-3 text-white">{{ project.title }}</h3>
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
-                            مشروع موسمي يهدف إلى توفير السلال الغذائية للأسر المحتاجة خلال شهر رمضان، ومشاركتهم فرحة
-                            الشهر الكريم والتخفيف من أعبائهم المعيشية.
+                            {{ project.description }}
                         </p>
                     </div>
-
-                    <!-- Eid Joy -->
-                    <div
-                        class="reveal delay-200 interactive-card bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-950 text-white p-8 sm:p-10 rounded-3xl relative overflow-hidden shadow-lg hover:shadow-2xl border border-emerald-500/20">
-                        <div class="absolute top-0 left-0 p-8 opacity-10 text-8xl pointer-events-none">
-                            <i class="fa-solid fa-gift"></i>
-                        </div>
-                        <span
-                            class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs px-3.5 py-1.5 rounded-full font-bold mb-5 inline-block">مشروع
-                            موسمي</span>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold mb-3 text-white">فرحة عيد</h3>
-                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
-                            نسعى من خلال هذا المشروع إلى إدخال الفرحة إلى قلوب الأسر والأطفال المحتاجين في الأعياد، من
-                            خلال توفير الاحتياجات والمساهمات التي تساعدهم على استقبال العيد بفرحة وكرامة.
-                        </p>
-                    </div>
+                    {% empty %}
+                    <p class="col-span-full text-center text-slate-400">لا توجد مشاريع مضافة بعد.</p>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -524,34 +419,33 @@
                     <button onclick="filterGallery('all', this)" 
                         class="gallery-filter-btn active bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all shadow-md shadow-emerald-600/20 hover:scale-105 active:scale-95 cursor-pointer">
                         <span>الكل</span>
-                        <span class="text-xs opacity-80 mr-1.5">(10)</span>
+                        <span class="text-xs opacity-80 mr-1.5">({{ gallery_photos|length|add:gallery_videos|length }})</span>
                     </button>
                     <button onclick="filterGallery('photo', this)" 
                         class="gallery-filter-btn bg-white hover:bg-slate-50 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm border border-slate-200 hover:border-emerald-300 transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2">
                         <i class="fa-solid fa-camera text-emerald-600"></i>
                         <span>الصور</span>
-                        <span class="text-xs text-slate-400">(6)</span>
+                        <span class="text-xs text-slate-400">({{ gallery_photos|length }})</span>
                     </button>
                     <button onclick="filterGallery('video', this)" 
                         class="gallery-filter-btn bg-white hover:bg-slate-50 text-slate-700 font-bold px-5 py-2.5 rounded-xl text-sm border border-slate-200 hover:border-emerald-300 transition-all shadow-sm hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2">
                         <i class="fa-solid fa-video text-rose-500"></i>
                         <span>الفيديوهات</span>
-                        <span class="text-xs text-slate-400">(4)</span>
+                        <span class="text-xs text-slate-400">({{ gallery_videos|length }})</span>
                     </button>
                 </div>
 
                 <!-- Gallery Grid -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
-                    <!-- Photos -->
-                    <!-- Item 1 -->
+                    {% for photo in gallery_photos %}
                     <div class="gallery-item photo reveal delay-100 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.35 PM.jpeg', 'تجهيز وتوزيع السلال الغذائية الرمضانية')">
-                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.35 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
+                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('{{ photo.media_url }}', '{{ photo.title }}')">
+                            <img src="{{ photo.media_url }}" alt="{{ photo.title }}"
                                 class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
                                 <div class="text-white">
                                     <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
-                                    <p class="font-bold text-sm">تجهيز وتوزيع السلال الغذائية الرمضانية</p>
+                                    <p class="font-bold text-sm">{{ photo.title }}</p>
                                 </div>
                             </div>
                             <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -559,98 +453,12 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Item 2 -->
-                    <div class="gallery-item photo reveal delay-200 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (1).jpeg', 'مشاريع العطاء والإغاثة الميدانية')">
-                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (1).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                                <div class="text-white">
-                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
-                                    <p class="font-bold text-sm">مشاريع العطاء والإغاثة الميدانية</p>
-                                </div>
-                            </div>
-                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div class="gallery-item photo reveal delay-300 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (2).jpeg', 'توصيل المساعدات للأسر المتعففة')">
-                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM (2).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                                <div class="text-white">
-                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
-                                    <p class="font-bold text-sm">توصيل المساعدات للأسر المتعففة</p>
-                                </div>
-                            </div>
-                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="gallery-item photo reveal delay-100 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM.jpeg', 'وقفات التكاتف والمساندة المجتمعية')">
-                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.36 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                                <div class="text-white">
-                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
-                                    <p class="font-bold text-sm">وقفات التكاتف والمساندة المجتمعية</p>
-                                </div>
-                            </div>
-                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 5 -->
-                    <div class="gallery-item photo reveal delay-200 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM.jpeg', 'تأمين الاحتياجات الأساسية للمحتاجين')">
-                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM.jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                                <div class="text-white">
-                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
-                                    <p class="font-bold text-sm">تأمين الاحتياجات الأساسية للمحتاجين</p>
-                                </div>
-                            </div>
-                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Item 6 -->
-                    <div class="gallery-item photo reveal delay-300 group relative rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300">
-                        <div class="aspect-[4/3] overflow-hidden bg-slate-900 cursor-pointer relative" onclick="openLightbox('Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM (1).jpeg', 'إشراف وتنسيق فريق فزعة المحتاج')">
-                            <img src="Gallary/WhatsApp Image 2026-08-27 at 9.42.38 PM (1).jpeg" alt="توثيق مبادرة فزعة المحتاج" 
-                                class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                                <div class="text-white">
-                                    <span class="bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-md mb-2 inline-block">📸 صورة</span>
-                                    <p class="font-bold text-sm">إشراف وتنسيق فريق فزعة المحتاج</p>
-                                </div>
-                            </div>
-                            <div class="absolute top-3 left-3 w-9 h-9 rounded-full bg-slate-900/60 backdrop-blur text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Videos -->
-                    <!-- Video 1 -->
+                    {% endfor %}
+                    {% for video in gallery_videos %}
                     <div class="gallery-item video reveal delay-100 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
                         <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
                             <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
-                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.33 PM.mp4" type="video/mp4">
+                                <source src="{{ video.media_url }}" type="video/mp4">
                                 المتصفح لا يدعم تشغيل الفيديو.
                             </video>
                             <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
@@ -659,64 +467,11 @@
                             </span>
                         </div>
                         <div class="p-4 bg-white border-t border-slate-100">
-                            <h4 class="font-bold text-slate-900 text-sm">توثيق تسليم وتوزيع المساعدات الميدانية</h4>
-                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
+                            <h4 class="font-bold text-slate-900 text-sm">{{ video.title }}</h4>
+                            <p class="text-xs text-slate-500 mt-1">{{ video.subtitle }}</p>
                         </div>
                     </div>
-
-                    <!-- Video 2 -->
-                    <div class="gallery-item video reveal delay-200 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
-                        <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
-                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.33 PM (1).mp4" type="video/mp4">
-                                المتصفح لا يدعم تشغيل الفيديو.
-                            </video>
-                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
-                                <i class="fa-solid fa-video text-[10px]"></i>
-                                <span>فيديو توثيقي</span>
-                            </span>
-                        </div>
-                        <div class="p-4 bg-white border-t border-slate-100">
-                            <h4 class="font-bold text-slate-900 text-sm">مراحل إعداد السلال والطرود الخيرية</h4>
-                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
-                        </div>
-                    </div>
-
-                    <!-- Video 3 -->
-                    <div class="gallery-item video reveal delay-300 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
-                        <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
-                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.33 PM (2).mp4" type="video/mp4">
-                                المتصفح لا يدعم تشغيل الفيديو.
-                            </video>
-                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
-                                <i class="fa-solid fa-video text-[10px]"></i>
-                                <span>فيديو توثيقي</span>
-                            </span>
-                        </div>
-                        <div class="p-4 bg-white border-t border-slate-100">
-                            <h4 class="font-bold text-slate-900 text-sm">استجابة المبادرة للحالات الميدانية العاجلة</h4>
-                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
-                        </div>
-                    </div>
-
-                    <!-- Video 4 -->
-                    <div class="gallery-item video reveal delay-100 rounded-3xl overflow-hidden shadow-md bg-white border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
-                        <div class="relative bg-slate-950 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                            <video class="w-full h-full object-cover" controls preload="metadata" playsinline>
-                                <source src="Gallary/WhatsApp Video 2026-08-27 at 9.42.34 PM.mp4" type="video/mp4">
-                                المتصفح لا يدعم تشغيل الفيديو.
-                            </video>
-                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md pointer-events-none flex items-center gap-1">
-                                <i class="fa-solid fa-video text-[10px]"></i>
-                                <span>فيديو توثيقي</span>
-                            </span>
-                        </div>
-                        <div class="p-4 bg-white border-t border-slate-100">
-                            <h4 class="font-bold text-slate-900 text-sm">فرحة المستفيدين وتوثيق إنجازات العطاء</h4>
-                            <p class="text-xs text-slate-500 mt-1">#يلا_نسندهم - مبادرة فزعة المحتاج</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>
@@ -746,48 +501,33 @@
                             <h3 class="text-xl font-bold">الحسابات المصرفية</h3>
                         </div>
                         <div class="space-y-4">
-                            <!-- Bankak -->
+                            {% for method in bank_methods %}
                             <div
                                 class="bg-slate-900/70 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/60 transition-colors">
                                 <div>
-                                    <span class="text-slate-400 text-xs block mb-1">تطبيق بنكك (Bankak)</span>
-                                    <span class="text-lg font-mono font-bold text-emerald-300 select-all tracking-wider">3023848</span>
+                                    <span class="text-slate-400 text-xs block mb-1">{{ method.name }}</span>
+                                    <span class="text-lg font-mono font-bold text-emerald-300 select-all tracking-wider">{{ method.number }}</span>
                                 </div>
-                                <button onclick="copyNumber('3023848', this)"
+                                <button onclick="copyNumber('{{ method.number|escapejs }}', this)"
                                     class="copy-btn bg-slate-800 hover:bg-emerald-600/30 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/50 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
                                     title="نسخ الرقم">
                                     <i class="fa-regular fa-copy text-sm"></i>
                                     <span class="btn-text text-xs">نسخ</span>
                                 </button>
                             </div>
-
-                            <!-- Fawry -->
-                            <div
-                                class="bg-slate-900/70 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/60 transition-colors">
-                                <div>
-                                    <span class="text-slate-400 text-xs block mb-1">تطبيق فوري (Fawry)</span>
-                                    <span
-                                        class="text-lg font-mono font-bold text-emerald-300 select-all tracking-wider">51618095</span>
-                                </div>
-                                <button onclick="copyNumber('51618095', this)"
-                                    class="copy-btn bg-slate-800 hover:bg-emerald-600/30 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/50 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
-                                    title="نسخ الرقم">
-                                    <i class="fa-regular fa-copy text-sm"></i>
-                                    <span class="btn-text text-xs">نسخ</span>
-                                </button>
-                            </div>
-
+                            {% endfor %}
+                            {% if settings.donation_name %}
                             <div class="pt-2 text-sm text-slate-300 flex items-center justify-between">
                                 <div>
-                                    <span class="text-slate-400">باسم:</span> <strong class="text-white">آلاء
-                                        عبدالرحمن</strong>
+                                    <span class="text-slate-400">باسم:</span> <strong class="text-white">{{ settings.donation_name }}</strong>
                                 </div>
-                                <button onclick="copyNumber('آلاء عبدالرحمن', this, 'تم نسخ الاسم')"
+                                <button onclick="copyNumber('{{ settings.donation_name|escapejs }}', this, 'تم نسخ الاسم')"
                                     class="text-xs text-slate-400 hover:text-emerald-300 transition-colors flex items-center gap-1.5 py-1 px-2 rounded-md hover:bg-slate-800">
                                     <i class="fa-regular fa-copy text-xs"></i>
                                     <span>نسخ الاسم</span>
                                 </button>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
 
@@ -800,37 +540,22 @@
                             <h3 class="text-xl font-bold">المساهمة عبر الرصيد</h3>
                         </div>
                         <div class="space-y-4">
-                            <!-- Areeba -->
+                            {% for method in mobile_methods %}
                             <div
                                 class="bg-slate-900/70 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/60 transition-colors">
                                 <div>
-                                    <span class="text-slate-400 text-xs block mb-1">أريبا (Areeba)</span>
+                                    <span class="text-slate-400 text-xs block mb-1">{{ method.name }}</span>
                                     <span
-                                        class="text-lg font-mono font-bold text-emerald-300 select-all tracking-wider">0990823331</span>
+                                        class="text-lg font-mono font-bold text-emerald-300 select-all tracking-wider">{{ method.number }}</span>
                                 </div>
-                                <button onclick="copyNumber('0990823331', this)"
+                                <button onclick="copyNumber('{{ method.number|escapejs }}', this)"
                                     class="copy-btn bg-slate-800 hover:bg-emerald-600/30 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/50 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
                                     title="نسخ الرقم">
                                     <i class="fa-regular fa-copy text-sm"></i>
                                     <span class="btn-text text-xs">نسخ</span>
                                 </button>
                             </div>
-
-                            <!-- Sudani -->
-                            <div
-                                class="bg-slate-900/70 p-4 rounded-xl border border-slate-700/50 flex items-center justify-between gap-3 group hover:border-emerald-500/60 transition-colors">
-                                <div>
-                                    <span class="text-slate-400 text-xs block mb-1">سوداني (Sudani)</span>
-                                    <span
-                                        class="text-lg font-mono font-bold text-emerald-300 select-all tracking-wider">0119841566</span>
-                                </div>
-                                <button onclick="copyNumber('0119841566', this)"
-                                    class="copy-btn bg-slate-800 hover:bg-emerald-600/30 text-slate-300 hover:text-emerald-300 border border-slate-700 hover:border-emerald-500/50 px-3.5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
-                                    title="نسخ الرقم">
-                                    <i class="fa-regular fa-copy text-sm"></i>
-                                    <span class="btn-text text-xs">نسخ</span>
-                                </button>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -841,12 +566,12 @@
                     <h4 class="text-2xl font-bold mb-3 text-white">تواصل معنا ومتابعة الحالات أولاً بأول</h4>
                     <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-xl mx-auto">للاستفسارات، متابعة تقارير الحالات، التبرع المباشر، أو الرغبة في الانضمام والتطوع مع المبادرة</p>
                     <div class="flex flex-wrap justify-center gap-4">
-                        <a href="https://chat.whatsapp.com/JxMWrPjswZoGB5IoP1OgFv?s=cl&p=a&ilr=0" target="_blank"
+                        <a href="{{ settings.whatsapp_link }}" target="_blank"
                             class="btn-shimmer inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-7 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5 active:scale-95 text-base">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
                             <span>انضم لقروب الواتساب الرسمي</span>
                         </a>
-                        <a href="https://facebook.com/groups/971459819951254/" target="_blank"
+                        <a href="{{ settings.facebook_link }}" target="_blank"
                             class="btn-shimmer inline-flex items-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-black px-7 py-3.5 rounded-xl transition-all shadow-lg hover:shadow-blue-600/30 hover:-translate-y-0.5 active:scale-95 text-base">
                             <i class="fa-brands fa-facebook text-2xl"></i>
                             <span>انضم لمجموعة الفيسبوك</span>
@@ -919,9 +644,9 @@
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3">
-                <img src="logo.jpg" alt="شعار فزعة المحتاج" class="w-11 h-11 rounded-full object-cover border border-slate-700 shadow-sm">
+                <img src="{% if settings.logo %}{{ settings.logo.url }}{% else %}logo.jpg{% endif %}" alt="شعار فزعة المحتاج" class="w-11 h-11 rounded-full object-cover border border-slate-700 shadow-sm">
                 <div>
-                    <p class="text-sm text-slate-200 font-bold">مبادرة فزعة المحتاج الخيرية</p>
+                    <p class="text-sm text-slate-200 font-bold">{{ settings.site_name }}</p>
                     <p class="text-xs text-slate-500">جميع الحقوق محفوظة ©</p>
                 </div>
             </div>
@@ -929,12 +654,12 @@
             <!-- Social Links & Hashtags -->
             <div class="flex flex-wrap items-center justify-center gap-6">
                 <div class="flex items-center gap-3">
-                    <a href="https://chat.whatsapp.com/JxMWrPjswZoGB5IoP1OgFv?s=cl&p=a&ilr=0" target="_blank"
+                    <a href="{{ settings.whatsapp_link }}" target="_blank"
                         class="w-9 h-9 rounded-full bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white flex items-center justify-center transition-all hover:scale-110"
                         title="واتساب">
                         <i class="fa-brands fa-whatsapp text-base"></i>
                     </a>
-                    <a href="https://facebook.com/groups/971459819951254/" target="_blank"
+                    <a href="{{ settings.facebook_link }}" target="_blank"
                         class="w-9 h-9 rounded-full bg-slate-800 hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition-all hover:scale-110"
                         title="فيسبوك">
                         <i class="fa-brands fa-facebook-f text-base"></i>
@@ -946,8 +671,7 @@
                     </button>
                 </div>
                 <div class="flex gap-4 text-xs font-bold text-emerald-400">
-                    <span>#فزعة_المحتاج</span>
-                    <span>#يلا_نسندهم</span>
+                    <span>{{ settings.hashtag }}</span>
                 </div>
             </div>
         </div>
